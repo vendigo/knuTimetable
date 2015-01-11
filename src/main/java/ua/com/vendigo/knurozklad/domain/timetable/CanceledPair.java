@@ -1,6 +1,7 @@
-package ua.com.vendigo.knurozklad.domain;
+package ua.com.vendigo.knurozklad.domain.timetable;
 
-import org.joda.time.LocalDate;
+import ua.com.vendigo.knurozklad.domain.faculty.Group;
+import ua.com.vendigo.knurozklad.domain.time.SimpleDate;
 
 /**
  * Created by Dmytro Marchenko on 10.01.2015.
@@ -8,12 +9,12 @@ import org.joda.time.LocalDate;
  */
 public class CanceledPair {
     private final Integer id;
-    private final LocalDate date;
+    private final SimpleDate date;
     private final Group group;
     private final int pairNumber;
     private final String description;
 
-    public CanceledPair(Integer id, LocalDate date, Group group, int pairNumber, String description) {
+    public CanceledPair(Integer id, SimpleDate date, Group group, int pairNumber, String description) {
         this.id = id;
         this.date = date;
         this.group = group;
@@ -25,7 +26,7 @@ public class CanceledPair {
         return id;
     }
 
-    public LocalDate getDate() {
+    public SimpleDate getDate() {
         return date;
     }
 

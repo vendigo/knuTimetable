@@ -1,7 +1,5 @@
-package ua.com.vendigo.knurozklad.domain;
+package ua.com.vendigo.knurozklad.domain.time;
 
-
-import org.joda.time.LocalTime;
 
 /**
  * Created by Dmytro Marchenko on 10.01.2015.
@@ -9,12 +7,12 @@ import org.joda.time.LocalTime;
  */
 public class PairTime {
     private final Integer id;
-    private final LocalTime timeBegin;
-    private final LocalTime timeBreak;
-    private final LocalTime timeBreakEnd;
-    private final LocalTime timeEnd;
+    private final SimpleTime timeBegin;
+    private final SimpleTime timeBreak;
+    private final SimpleTime timeBreakEnd;
+    private final SimpleTime timeEnd;
 
-    public PairTime(Integer id, LocalTime timeBegin, LocalTime timeBreak, LocalTime timeBreakEnd, LocalTime timeEnd) {
+    public PairTime(Integer id, SimpleTime timeBegin, SimpleTime timeBreak, SimpleTime timeBreakEnd, SimpleTime timeEnd) {
         this.id = id;
         this.timeBegin = timeBegin;
         this.timeBreak = timeBreak;
@@ -26,19 +24,19 @@ public class PairTime {
         return id;
     }
 
-    public LocalTime getTimeBegin() {
+    public SimpleTime getTimeBegin() {
         return timeBegin;
     }
 
-    public LocalTime getTimeBreak() {
+    public SimpleTime getTimeBreak() {
         return timeBreak;
     }
 
-    public LocalTime getTimeBreakEnd() {
+    public SimpleTime getTimeBreakEnd() {
         return timeBreakEnd;
     }
 
-    public LocalTime getTimeEnd() {
+    public SimpleTime getTimeEnd() {
         return timeEnd;
     }
 

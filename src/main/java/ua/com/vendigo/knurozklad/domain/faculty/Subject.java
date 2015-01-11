@@ -1,4 +1,6 @@
-package ua.com.vendigo.knurozklad.domain;
+package ua.com.vendigo.knurozklad.domain.faculty;
+
+import ua.com.vendigo.knurozklad.domain.pair.ExamType;
 
 /**
  * Created by Dmytro Marchenko on 10.01.2015.

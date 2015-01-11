@@ -1,4 +1,4 @@
-package ua.com.vendigo.knurozklad.domain;
+package ua.com.vendigo.knurozklad.domain.faculty;
 
 /**
  * Created by Dmytro Marchenko on 10.01.2015.
@@ -8,9 +8,9 @@ public class Group {
     private final Integer id;
     private final int courseNumber;
     private final String name;
-    private final String department;
+    private final Department department;
 
-    public Group(Integer id, int courseNumber, String name, String department) {
+    public Group(Integer id, int courseNumber, String name, Department department) {
         this.id = id;
         this.courseNumber = courseNumber;
         this.name = name;
@@ -29,7 +29,7 @@ public class Group {
         return name;
     }
 
-    public String getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 

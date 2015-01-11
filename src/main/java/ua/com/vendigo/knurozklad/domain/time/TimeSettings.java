@@ -1,4 +1,4 @@
-package ua.com.vendigo.knurozklad.domain;
+package ua.com.vendigo.knurozklad.domain.time;
 
 import java.util.Map;
 
@@ -10,10 +10,12 @@ import java.util.Map;
 public class TimeSettings {
     private final Integer id;
     private final Map<Integer, PairTime> pairTimes;
+    private final SimpleDate oddWeekDate;
 
-    public TimeSettings(Integer id, Map<Integer, PairTime> pairTimes) {
+    public TimeSettings(Integer id, Map<Integer, PairTime> pairTimes, SimpleDate oddWeekDate) {
         this.id = id;
         this.pairTimes = pairTimes;
+        this.oddWeekDate = oddWeekDate;
     }
 
     public Integer getId() {
@@ -24,6 +26,10 @@ public class TimeSettings {
         return pairTimes;
     }
 
+    public SimpleDate getOddWeekDate() {
+        return oddWeekDate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -32,6 +38,7 @@ public class TimeSettings {
         TimeSettings that = (TimeSettings) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (oddWeekDate != null ? !oddWeekDate.equals(that.oddWeekDate) : that.oddWeekDate != null) return false;
         if (pairTimes != null ? !pairTimes.equals(that.pairTimes) : that.pairTimes != null) return false;
 
         return true;
@@ -41,6 +48,7 @@ public class TimeSettings {
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (pairTimes != null ? pairTimes.hashCode() : 0);
+        result = 31 * result + (oddWeekDate != null ? oddWeekDate.hashCode() : 0);
         return result;
     }
 
@@ -49,6 +57,7 @@ public class TimeSettings {
         return "TimeSettings{" +
                 "id=" + id +
                 ", pairTimes=" + pairTimes +
+                ", oddWeekDate=" + oddWeekDate +
                 '}';
     }
 }

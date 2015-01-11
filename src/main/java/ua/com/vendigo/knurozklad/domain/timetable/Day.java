@@ -1,4 +1,7 @@
-package ua.com.vendigo.knurozklad.domain;
+package ua.com.vendigo.knurozklad.domain.timetable;
+
+import ua.com.vendigo.knurozklad.domain.pair.Pair;
+import ua.com.vendigo.knurozklad.domain.time.DayOfWeek;
 
 import java.util.List;
 import java.util.Map;

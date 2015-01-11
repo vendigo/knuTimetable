@@ -1,16 +1,16 @@
-package ua.com.vendigo.knurozklad.domain;
+package ua.com.vendigo.knurozklad.domain.faculty;
 
 /**
  * Created by Dmytro Marchenko on 10.01.2015.
  */
-public class Cabinet {
+public class Teacher {
     private final Integer id;
-    private final String number;
+    private final String name;
     private final String description;
 
-    public Cabinet(Integer id, String number, String description) {
+    public Teacher(Integer id, String name, String description) {
         this.id = id;
-        this.number = number;
+        this.name = name;
         this.description = description;
     }
 
@@ -18,8 +18,8 @@ public class Cabinet {
         return id;
     }
 
-    public String getNumber() {
-        return number;
+    public String getName() {
+        return name;
     }
 
     public String getDescription() {
@@ -31,11 +31,11 @@ public class Cabinet {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Cabinet cabinet = (Cabinet) o;
+        Teacher teacher = (Teacher) o;
 
-        if (description != null ? !description.equals(cabinet.description) : cabinet.description != null) return false;
-        if (id != null ? !id.equals(cabinet.id) : cabinet.id != null) return false;
-        if (number != null ? !number.equals(cabinet.number) : cabinet.number != null) return false;
+        if (description != null ? !description.equals(teacher.description) : teacher.description != null) return false;
+        if (id != null ? !id.equals(teacher.id) : teacher.id != null) return false;
+        if (name != null ? !name.equals(teacher.name) : teacher.name != null) return false;
 
         return true;
     }
@@ -43,16 +43,16 @@ public class Cabinet {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (number != null ? number.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "Cabinet{" +
+        return "Teacher{" +
                 "id=" + id +
-                ", number='" + number + '\'' +
+                ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }

@@ -1,14 +1,15 @@
-package ua.com.vendigo.knurozklad.domain;
+package ua.com.vendigo.knurozklad.domain.faculty;
 
 /**
- * Created by Dmytro Marchenko on 10.01.2015.
+ * Created by Dmytro Marchenko on 11.01.2015.
+ * Represent one department inside some faculty. In Ukrainian "kadefra".
  */
-public class Teacher {
+public class Department {
     private final Integer id;
     private final String name;
     private final String description;
 
-    public Teacher(Integer id, String name, String description) {
+    public Department(Integer id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -31,11 +32,11 @@ public class Teacher {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Teacher teacher = (Teacher) o;
+        Department that = (Department) o;
 
-        if (description != null ? !description.equals(teacher.description) : teacher.description != null) return false;
-        if (id != null ? !id.equals(teacher.id) : teacher.id != null) return false;
-        if (name != null ? !name.equals(teacher.name) : teacher.name != null) return false;
+        if (description != null ? !description.equals(that.description) : that.description != null) return false;
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
 
         return true;
     }
@@ -50,7 +51,7 @@ public class Teacher {
 
     @Override
     public String toString() {
-        return "Teacher{" +
+        return "Department{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +

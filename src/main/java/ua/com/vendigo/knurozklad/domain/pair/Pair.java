@@ -1,4 +1,7 @@
-package ua.com.vendigo.knurozklad.domain;
+package ua.com.vendigo.knurozklad.domain.pair;
+
+import ua.com.vendigo.knurozklad.domain.faculty.Cabinet;
+import ua.com.vendigo.knurozklad.domain.faculty.Teacher;
 
 /**
  * Created by Dmytro Marchenko on 10.01.2015.

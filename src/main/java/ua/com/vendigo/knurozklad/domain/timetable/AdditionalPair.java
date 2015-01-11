@@ -1,6 +1,8 @@
-package ua.com.vendigo.knurozklad.domain;
+package ua.com.vendigo.knurozklad.domain.timetable;
 
-import org.joda.time.LocalDate;
+import ua.com.vendigo.knurozklad.domain.faculty.Group;
+import ua.com.vendigo.knurozklad.domain.pair.Pair;
+import ua.com.vendigo.knurozklad.domain.time.SimpleDate;
 
 /**
  * Created by Dmytro Marchenko on 10.01.2015.
@@ -8,13 +10,13 @@ import org.joda.time.LocalDate;
  */
 public class AdditionalPair {
     private final Integer id;
-    private final LocalDate date;
+    private final SimpleDate date;
     private final Group group;
     private final int pairNumber;
     private final Pair pair;
     private final String description;
 
-    public AdditionalPair(Integer id, LocalDate date, Group group, int pairNumber, Pair pair, String description) {
+    public AdditionalPair(Integer id, SimpleDate date, Group group, int pairNumber, Pair pair, String description) {
         this.id = id;
         this.date = date;
         this.group = group;
@@ -27,7 +29,7 @@ public class AdditionalPair {
         return id;
     }
 
-    public LocalDate getDate() {
+    public SimpleDate getDate() {
         return date;
     }
 
