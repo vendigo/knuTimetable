@@ -33,7 +33,7 @@ public class TestDataHolder {
         Teacher nazarenko = new Teacher(1, "Назаренко Микола Олексійович", "Доцент кафедри математичного аналізу. Всі лекції переписує з книжки");
         Cabinet cabinet41 = new Cabinet(1, "42", "Велика лекційна аудиторія");
         Subject matan = new Subject(1, "Математичний аналіз", "Матан", "Базовий предмет мехмату", ExamType.EXAM);
-        Pair matanLecture = new Pair(1, cabinet41, nazarenko, PairType.LECTURE);
+        Pair matanLecture = new Pair(1, matan, cabinet41, nazarenko, PairType.LECTURE);
         Map<Integer, List<Pair>> mondayPairs = new HashMap<>();
         mondayPairs.put(1, Arrays.asList(matanLecture));
 
