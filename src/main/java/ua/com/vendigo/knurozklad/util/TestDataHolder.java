@@ -17,6 +17,7 @@ import java.util.*;
 public class TestDataHolder {
 
     public static final int TEST_GROUP_ID = 1;
+    public static final int TEST_FACULTY_ID = 1;
 
     private List<Faculty> faculties;
     private TimeTable stat1TimeTable;
@@ -56,12 +57,12 @@ public class TestDataHolder {
         Day friday = new Day(5, DayOfWeek.FRIDAY, pairs);
         List<Day> days = Arrays.asList(monday, tuesday, wednesday, thursday, friday);
 
-        Group statistika1 = new Group(1, 1, "Статистика", null);
-        Group math11 = new Group(2, 1, "1 група математики", null);
-        Group math12 = new Group(3, 1, "2 група математики", null);
-        Group math21 = new Group(4, 2, "1 група математики", null);
-        Group math22 = new Group(5, 2, "2 група математики", null);
-        Group statistika2 = new Group(6, 2, "Статистика", null);
+        Group statistika1 = new Group(1, 1, "Статистика", TEST_FACULTY_ID, null);
+        Group math11 = new Group(2, 1, "1 група математики", TEST_FACULTY_ID, null);
+        Group math12 = new Group(3, 1, "2 група математики", TEST_FACULTY_ID, null);
+        Group math21 = new Group(4, 2, "1 група математики", TEST_FACULTY_ID, null);
+        Group math22 = new Group(5, 2, "2 група математики", TEST_FACULTY_ID, null);
+        Group statistika2 = new Group(6, 2, "Статистика", TEST_FACULTY_ID, null);
 
         List<Group> mechmatGroups = Arrays.asList(statistika1, math11, math12, math21, math22, statistika2);
 
@@ -71,6 +72,10 @@ public class TestDataHolder {
 
         faculties = Arrays.asList(mechmat, rff, fizfak);
         stat1TimeTable = new TimeTable(1, statistika1, timeSettings, days, 2014, 2, mechmat);
+    }
+
+    private void populateDB() {
+
     }
 
 
