@@ -12,19 +12,18 @@ public class Department {
     @Id
     @GeneratedValue
     private Integer id;
-    @Column(name = "name", nullable = false)
+    @Column(nullable = false)
     private String name;
-    @Column(name = "description", nullable = false)
+    @Column
     private String description;
-    @ManyToOne
-    @JoinColumn(name = "facultyId")
-    private int facultyId;
 
-    public Department(Integer id, String name, String description, int facultyId) {
+    public Department() {
+    }
+
+    public Department(Integer id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.facultyId = facultyId;
     }
 
     public Integer getId() {
@@ -37,9 +36,5 @@ public class Department {
 
     public String getDescription() {
         return description;
-    }
-
-    public int getFacultyId() {
-        return facultyId;
     }
 }

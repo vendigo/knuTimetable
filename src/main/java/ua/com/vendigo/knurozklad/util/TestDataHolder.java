@@ -1,14 +1,9 @@
 package ua.com.vendigo.knurozklad.util;
 
-import ua.com.vendigo.knurozklad.domain.faculty.*;
-import ua.com.vendigo.knurozklad.domain.pair.ExamType;
-import ua.com.vendigo.knurozklad.domain.pair.Pair;
-import ua.com.vendigo.knurozklad.domain.pair.PairType;
-import ua.com.vendigo.knurozklad.domain.time.*;
-import ua.com.vendigo.knurozklad.domain.timetable.Day;
+import ua.com.vendigo.knurozklad.domain.faculty.Faculty;
 import ua.com.vendigo.knurozklad.domain.timetable.TimeTable;
 
-import java.util.*;
+import java.util.List;
 
 /**
  * Created by Dmytro Marchenko on 10.01.2015.
@@ -17,7 +12,6 @@ import java.util.*;
 public class TestDataHolder {
 
     public static final int TEST_GROUP_ID = 1;
-    public static final int TEST_FACULTY_ID = 1;
 
     private List<Faculty> faculties;
     private TimeTable stat1TimeTable;
@@ -27,7 +21,7 @@ public class TestDataHolder {
     }
 
     private void init() {
-        //Time settings
+        /*//Time settings
         PairTime pair1Time = new PairTime(1, new SimpleTime(8, 40), new SimpleTime(9, 25), new SimpleTime(9, 30), new SimpleTime(10, 15));
         PairTime pair2Time = new PairTime(2, new SimpleTime(10, 35), new SimpleTime(11, 20), new SimpleTime(11, 25), new SimpleTime(12, 10));
         PairTime pair3Time = new PairTime(3, new SimpleTime(12, 20), new SimpleTime(13, 05), new SimpleTime(13, 10), new SimpleTime(13, 55));
@@ -57,12 +51,13 @@ public class TestDataHolder {
         Day friday = new Day(5, DayOfWeek.FRIDAY, pairs);
         List<Day> days = Arrays.asList(monday, tuesday, wednesday, thursday, friday);
 
-        Group statistika1 = new Group(1, 1, "Статистика", TEST_FACULTY_ID, null);
-        Group math11 = new Group(2, 1, "1 група математики", TEST_FACULTY_ID, null);
-        Group math12 = new Group(3, 1, "2 група математики", TEST_FACULTY_ID, null);
-        Group math21 = new Group(4, 2, "1 група математики", TEST_FACULTY_ID, null);
-        Group math22 = new Group(5, 2, "2 група математики", TEST_FACULTY_ID, null);
-        Group statistika2 = new Group(6, 2, "Статистика", TEST_FACULTY_ID, null);
+
+        Group statistika1 = new Group(1, 1, "Статистика", null);
+        Group math11 = new Group(2, 1, "1 група математики", null);
+        Group math12 = new Group(3, 1, "2 група математики", null);
+        Group math21 = new Group(4, 2, "1 група математики", null);
+        Group math22 = new Group(5, 2, "2 група математики", null);
+        Group statistika2 = new Group(6, 2, "Статистика", null);
 
         List<Group> mechmatGroups = Arrays.asList(statistika1, math11, math12, math21, math22, statistika2);
 
@@ -71,13 +66,8 @@ public class TestDataHolder {
         Faculty fizfak = new Faculty(1, "Фізфак", "Фізичний факультет", Collections.<Group>emptyList(), Collections.<Department>emptyList());
 
         faculties = Arrays.asList(mechmat, rff, fizfak);
-        stat1TimeTable = new TimeTable(1, statistika1, timeSettings, days, 2014, 2, mechmat);
+        stat1TimeTable = new TimeTable(1, statistika1, timeSettings, days, 2014, 2, mechmat);*/
     }
-
-    private void populateDB() {
-
-    }
-
 
     public TimeTable getTimeTableForGroup(int groupId) {
         if (groupId == TEST_GROUP_ID) return stat1TimeTable;

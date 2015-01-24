@@ -15,14 +15,19 @@ public class Faculty {
     @Id
     @GeneratedValue
     private Integer id;
-    @Column(name = "id", nullable = false)
+    @Column(nullable = false)
     private String name;
-    @Column(name = "description")
+    @Column
     private String description;
-    @OneToMany(mappedBy = "group")
+    @OneToMany
+    @JoinColumn(name = "FACULTY_ID")
     private List<Group> groups;
-    @OneToMany(mappedBy = "department")
+    @OneToMany()
+    @JoinColumn(name = "FACULTY_ID")
     private List<Department> departments;
+
+    public Faculty() {
+    }
 
     public Faculty(Integer id, String name, String description, List<Group> groups, List<Department> departments) {
         this.id = id;
