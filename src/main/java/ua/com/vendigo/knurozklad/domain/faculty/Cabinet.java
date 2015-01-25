@@ -20,8 +20,7 @@ public class Cabinet {
     public Cabinet() {
     }
 
-    public Cabinet(Integer id, String number, String description) {
-        this.id = id;
+    public Cabinet(String number, String description) {
         this.number = number;
         this.description = description;
     }

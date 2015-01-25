@@ -16,15 +16,13 @@ public class Group {
     private int courseNumber;
     @Column(nullable = false)
     private String name;
-    @ManyToOne
-    @JoinColumn(nullable = false)
+    @ManyToOne(optional = false)
     private Department department;
 
     public Group() {
     }
 
-    public Group(Integer id, int courseNumber, String name, Department department) {
-        this.id = id;
+    public Group(int courseNumber, String name, Department department) {
         this.courseNumber = courseNumber;
         this.name = name;
         this.department = department;

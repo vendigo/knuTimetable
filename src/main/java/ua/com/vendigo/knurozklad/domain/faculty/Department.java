@@ -20,8 +20,7 @@ public class Department {
     public Department() {
     }
 
-    public Department(Integer id, String name, String description) {
-        this.id = id;
+    public Department(String name, String description) {
         this.name = name;
         this.description = description;
     }

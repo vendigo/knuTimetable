@@ -1,50 +1,62 @@
 package ua.com.vendigo.knurozklad.domain.time;
 
 
-import org.joda.time.LocalDate;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.joda.deser.LocalTimeDeserializer;
+import com.fasterxml.jackson.datatype.joda.ser.LocalTimeSerializer;
+import org.hibernate.annotations.Type;
+import org.joda.time.LocalTime;
 
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * Created by Dmytro Marchenko on 10.01.2015.
  * Contains time settings for specific pair.
  */
 @Entity
-@Table(name = "pairtimes")
+@Table(name = "pair_times")
 public class PairTime {
     @Id
     @GeneratedValue
     private Integer id;
+
     @Column(nullable = false)
-    private LocalDate timeBegin;
+    private int pairNumber;
+
     @Column(nullable = false)
-    private LocalDate timeBreak;
+    @JsonDeserialize(using = LocalTimeDeserializer.class)
+    @JsonSerialize(using = LocalTimeSerializer.class)
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalTime")
+    private LocalTime timeBegin;
+
     @Column(nullable = false)
-    private java.sql.Date timeBreakEnd;
+    @JsonDeserialize(using = LocalTimeDeserializer.class)
+    @JsonSerialize(using = LocalTimeSerializer.class)
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalTime")
+    private LocalTime timeBreak;
+
     @Column(nullable = false)
-    private java.util.Date timeEnd;
+    @JsonDeserialize(using = LocalTimeDeserializer.class)
+    @JsonSerialize(using = LocalTimeSerializer.class)
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalTime")
+    private LocalTime timeBreakEnd;
+
+    @Column(nullable = false)
+    @JsonDeserialize(using = LocalTimeDeserializer.class)
+    @JsonSerialize(using = LocalTimeSerializer.class)
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalTime")
+    private LocalTime timeEnd;
 
     public PairTime() {
     }
 
-    public Integer getId() {
-        return id;
-    }
 
-    public LocalDate getTimeBegin() {
-        return timeBegin;
-    }
-
-    public LocalDate getTimeBreak() {
-        return timeBreak;
-    }
-
-    public java.sql.Date getTimeBreakEnd() {
-        return timeBreakEnd;
-    }
-
-    public Date getTimeEnd() {
-        return timeEnd;
+    public PairTime(int pairNumber, LocalTime timeBegin, LocalTime timeBreak, LocalTime timeBreakEnd, LocalTime timeEnd) {
+        this.pairNumber = pairNumber;
+        this.timeBegin = timeBegin;
+        this.timeBreak = timeBreak;
+        this.timeBreakEnd = timeBreakEnd;
+        this.timeEnd = timeEnd;
     }
 }

@@ -16,11 +16,11 @@ public class Pair {
     @Id
     @GeneratedValue
     private Integer id;
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Subject subject;
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Cabinet cabinet;
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Teacher teacher;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
@@ -29,8 +29,7 @@ public class Pair {
     public Pair() {
     }
 
-    public Pair(Integer id, Subject subject, Cabinet cabinet, Teacher teacher, PairType pairType) {
-        this.id = id;
+    public Pair(Subject subject, Cabinet cabinet, Teacher teacher, PairType pairType) {
         this.subject = subject;
         this.cabinet = cabinet;
         this.teacher = teacher;

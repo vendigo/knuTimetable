@@ -1,4 +1,4 @@
-package ua.com.vendigo.knurozklad.service;
+package ua.com.vendigo.knurozklad.service.faculty;
 
 import ua.com.vendigo.knurozklad.domain.faculty.Group;
 

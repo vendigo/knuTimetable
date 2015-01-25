@@ -13,4 +13,6 @@ import java.util.List;
 @NoRepositoryBean
 public interface GenericRepository<T, ID extends Serializable> extends Repository<T, ID> {
     List<T> findAll();
+
+    <S extends T> S save(S object);
 }

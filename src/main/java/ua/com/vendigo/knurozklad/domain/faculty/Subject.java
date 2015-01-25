@@ -27,8 +27,7 @@ public class Subject {
     public Subject() {
     }
 
-    public Subject(Integer id, String name, String shortName, String description, ExamType examType) {
-        this.id = id;
+    public Subject(String name, String shortName, String description, ExamType examType) {
         this.name = name;
         this.shortName = shortName;
         this.description = description;

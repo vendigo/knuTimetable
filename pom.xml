@@ -18,6 +18,8 @@
     <properties>
         <java.version>1.7</java.version>
         <joda-time-version>2.6</joda-time-version>
+        <jackson-datatype-joda-version>2.2.1</jackson-datatype-joda-version>
+        <jadira-version>3.2.0.GA</jadira-version>
     </properties>
 
     <!--DEPENDENCIES-->
@@ -44,6 +46,16 @@
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
             <version>${joda-time-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-joda</artifactId>
+            <version>${jackson-datatype-joda-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jadira.usertype</groupId>
+            <artifactId>usertype.core</artifactId>
+            <version>${jadira-version}</version>
         </dependency>
 
         <!--Testing-->

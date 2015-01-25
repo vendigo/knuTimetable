@@ -3,6 +3,8 @@ package ua.com.vendigo.knurozklad.domain.timetable;
 import ua.com.vendigo.knurozklad.domain.pair.Pair;
 import ua.com.vendigo.knurozklad.domain.time.DayOfWeek;
 
+import javax.persistence.*;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,15 +12,24 @@ import java.util.Map;
  * Created by Dmytro Marchenko on 10.01.2015.
  * Represents one day. Contains mapping: number of pair - list of pairs.
  */
+@Entity
+@Table(name = "days")
 public class Day {
-    private final Integer id;
-    private final DayOfWeek dayOfWeek;
-    private final Map<Integer, List<Pair>> pairs;
+    @Id
+    @GeneratedValue
+    private Integer id;
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private DayOfWeek dayOfWeek;
 
-    public Day(Integer id, DayOfWeek dayOfWeek, Map<Integer, List<Pair>> pairs) {
-        this.id = id;
+    @OneToMany(mappedBy = "day")
+    private List<DayPairMapping> dayPairMapping;
+
+    public Day() {
+    }
+
+    public Day(DayOfWeek dayOfWeek) {
         this.dayOfWeek = dayOfWeek;
-        this.pairs = pairs;
     }
 
     public Integer getId() {
@@ -29,38 +40,20 @@ public class Day {
         return dayOfWeek;
     }
 
-    public Map<Integer, List<Pair>> getPairs() {
+    public Map<Integer, Pair> getPairs() {
+        Map<Integer, Pair> pairs = new HashMap<>();
+        for (DayPairMapping pairMapping : dayPairMapping) {
+            pairs.put(pairMapping.getNumberOfPair(), pairMapping.getPair());
+        }
         return pairs;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Day day = (Day) o;
-
-        if (dayOfWeek != day.dayOfWeek) return false;
-        if (id != null ? !id.equals(day.id) : day.id != null) return false;
-        if (pairs != null ? !pairs.equals(day.pairs) : day.pairs != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (dayOfWeek != null ? dayOfWeek.hashCode() : 0);
-        result = 31 * result + (pairs != null ? pairs.hashCode() : 0);
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Day{" +
-                "id=" + id +
-                ", dayOfWeek=" + dayOfWeek +
-                ", pairs=" + pairs +
-                '}';
+    /**
+     * Mutual object! For test purposes only. Should be deleted.
+     *
+     * @param dayPairMapping
+     */
+    public void setDayPairMapping(List<DayPairMapping> dayPairMapping) {
+        this.dayPairMapping = dayPairMapping;
     }
 }

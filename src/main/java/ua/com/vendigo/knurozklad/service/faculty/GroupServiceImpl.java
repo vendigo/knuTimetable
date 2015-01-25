@@ -1,9 +1,9 @@
-package ua.com.vendigo.knurozklad.service;
+package ua.com.vendigo.knurozklad.service.faculty;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ua.com.vendigo.knurozklad.domain.faculty.Group;
-import ua.com.vendigo.knurozklad.repository.GroupRepository;
+import ua.com.vendigo.knurozklad.repository.faculty.GroupRepository;
 
 import java.util.List;
 

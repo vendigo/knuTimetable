@@ -29,8 +29,7 @@ public class Faculty {
     public Faculty() {
     }
 
-    public Faculty(Integer id, String name, String description, List<Group> groups, List<Department> departments) {
-        this.id = id;
+    public Faculty(String name, String description, List<Group> groups, List<Department> departments) {
         this.name = name;
         this.description = description;
         this.groups = groups;
