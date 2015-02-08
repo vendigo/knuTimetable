@@ -8,4 +8,5 @@ import ua.com.vendigo.knurozklad.repository.GenericRepository;
  * Repository interface for Spring-Data-JPA. Implementation will be created in runtime.
  */
 public interface TimeTableRepository extends GenericRepository<TimeTable, Integer> {
+    TimeTable findByGroup_IdAndYear(int groupId, int year);
 }

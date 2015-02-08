@@ -16,7 +16,7 @@ public class Group {
     private int courseNumber;
     @Column(nullable = false)
     private String name;
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     private Department department;
 
     public Group() {

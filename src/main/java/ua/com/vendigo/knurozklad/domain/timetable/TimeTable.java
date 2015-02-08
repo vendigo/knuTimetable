@@ -24,6 +24,9 @@ public class TimeTable {
     @OneToMany
     @JoinColumn(name = "TIMETABLE_ID")
     private List<Day> days;
+    /**
+     * Year of first semester.
+     */
     @Column(nullable = false)
     private int year;
     @Column(nullable = false)

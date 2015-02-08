@@ -5,7 +5,9 @@ import org.springframework.stereotype.Component;
 import ua.com.vendigo.knurozklad.domain.timetable.TimeTable;
 import ua.com.vendigo.knurozklad.repository.timetable.TimeTableRepository;
 
-import java.util.List;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.EnumSet;
 
 /**
  * Created by Dmytro Marchenko on 25.01.2015.
@@ -16,13 +18,18 @@ public class TimeTableServiceImpl implements TimeTableService {
     @Autowired
     TimeTableRepository timeTableRepository;
 
-    @Override
-    public TimeTable saveTimeTable(TimeTable timeTable) {
-        return timeTableRepository.save(timeTable);
-    }
+    private final EnumSet<Month> firstTerm = EnumSet.of(Month.SEPTEMBER, Month.OCTOBER, Month.NOVEMBER, Month.DECEMBER);
 
     @Override
-    public List<TimeTable> findAllTimeTables() {
-        return timeTableRepository.findAll();
+    public TimeTable getActualTimeTableForGroup(int groupId) {
+        //Define correct value for year
+        LocalDate currentDate = LocalDate.now();
+        int year = currentDate.getYear();
+        Month month = currentDate.getMonth();
+        if (!firstTerm.contains(month)) {
+            year--;
+        }
+
+        return timeTableRepository.findByGroup_IdAndYear(groupId, year);
     }
 }
