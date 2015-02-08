@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2091921131">
+    <data-source source="LOCAL" name="KNUTimetable" uuid="0f4fb8c9-b466-4e06-9894-75a8dbec7ed9">
+      <driver-ref>hsqldb.remote</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.hsqldb.jdbcDriver</jdbc-driver>
+      <jdbc-url>jdbc:hsqldb:hsql://localhost:9001/timetableknu;ifexist=true</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>
