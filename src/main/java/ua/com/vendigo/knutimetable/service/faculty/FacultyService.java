@@ -1,13 +1,10 @@
 package ua.com.vendigo.knutimetable.service.faculty;
 
 import ua.com.vendigo.knutimetable.domain.faculty.Faculty;
-
-import java.util.List;
+import ua.com.vendigo.knutimetable.service.GenericService;
 
 /**
  * Created by Dmytro Marchenko on 08.02.2015.
  */
-public interface FacultyService {
-    List<Faculty> getAllFaculties();
-    Faculty getFacultyById(int facultyId);
+public interface FacultyService extends GenericService<Faculty, Integer> {
 }

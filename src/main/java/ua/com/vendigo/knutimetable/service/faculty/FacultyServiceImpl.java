@@ -17,12 +17,22 @@ public class FacultyServiceImpl implements FacultyService {
     FacultyRepository facultyRepository;
 
     @Override
-    public List<Faculty> getAllFaculties() {
+    public List<Faculty> findAll() {
         return facultyRepository.findAll();
     }
 
     @Override
-    public Faculty getFacultyById(int facultyId) {
+    public Faculty findOne(Integer facultyId) {
         return facultyRepository.findOne(facultyId);
+    }
+
+    @Override
+    public <S extends Faculty> S save(S faculty) {
+        return facultyRepository.save(faculty);
+    }
+
+    @Override
+    public void delete(Integer facultyId) {
+        facultyRepository.delete(facultyId);
     }
 }

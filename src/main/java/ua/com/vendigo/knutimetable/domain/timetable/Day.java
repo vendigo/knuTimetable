@@ -1,12 +1,9 @@
 package ua.com.vendigo.knutimetable.domain.timetable;
 
-import ua.com.vendigo.knutimetable.domain.pair.Pair;
 import ua.com.vendigo.knutimetable.domain.time.DayOfWeek;
 
 import javax.persistence.*;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Dmytro Marchenko on 10.01.2015.
@@ -21,9 +18,9 @@ public class Day {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private DayOfWeek dayOfWeek;
-
-    @OneToMany(mappedBy = "day")
-    private List<DayPairMapping> dayPairMapping;
+    @OneToMany
+    @JoinColumn(name = "DAY_ID")
+    private List<DayPairMapping> dayPairMappingList;
 
     public Day() {
     }
@@ -40,20 +37,7 @@ public class Day {
         return dayOfWeek;
     }
 
-    public Map<Integer, Pair> getPairs() {
-        Map<Integer, Pair> pairs = new HashMap<>();
-        for (DayPairMapping pairMapping : dayPairMapping) {
-            pairs.put(pairMapping.getNumberOfPair(), pairMapping.getPair());
-        }
-        return pairs;
-    }
-
-    /**
-     * Mutual object! For test purposes only. Should be deleted.
-     *
-     * @param dayPairMapping
-     */
-    public void setDayPairMapping(List<DayPairMapping> dayPairMapping) {
-        this.dayPairMapping = dayPairMapping;
+    public List<DayPairMapping> getDayPairMappingList() {
+        return dayPairMappingList;
     }
 }

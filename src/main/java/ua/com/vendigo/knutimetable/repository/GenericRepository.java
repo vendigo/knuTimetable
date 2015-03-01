@@ -15,4 +15,6 @@ public interface GenericRepository<T, ID extends Serializable> extends Repositor
     List<T> findAll();
     T findOne(ID id);
     <S extends T> S save(S object);
+
+    void delete(ID id);
 }

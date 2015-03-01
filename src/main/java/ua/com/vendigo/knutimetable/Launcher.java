@@ -2,8 +2,6 @@ package ua.com.vendigo.knutimetable;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import ua.com.vendigo.knutimetable.util.TestDataHolder;
 
 /**
  * Created by Dmytro Marchenko on 10.01.2015.
@@ -14,8 +12,4 @@ public class Launcher {
         SpringApplication.run(Launcher.class, args);
     }
 
-    @Bean
-    public TestDataHolder getTestDataHolder() {
-        return new TestDataHolder();
-    }
 }

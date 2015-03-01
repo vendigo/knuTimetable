@@ -14,29 +14,27 @@ public class DayPairMapping {
     @Id
     @GeneratedValue
     private Integer id;
-    @ManyToOne()
-    @JoinColumn(name = "DAY_ID")
-    private Day day;
     @Column(nullable = false)
     private int numberOfPair;
+    /**
+     * Indicates whether this mapping belongs to odd or even week.
+     */
+    @Column(nullable = false)
+    private int numberOfWeek;
     @ManyToOne
     private Pair pair;
 
     public DayPairMapping() {
     }
 
-    public DayPairMapping(Day day, int numberOfPair, Pair pair) {
-        this.day = day;
+    public DayPairMapping(int numberOfPair, int numberOfWeek, Pair pair) {
         this.numberOfPair = numberOfPair;
+        this.numberOfWeek = numberOfWeek;
         this.pair = pair;
     }
 
     public Integer getId() {
         return id;
-    }
-
-    public Day getDay() {
-        return day;
     }
 
     public int getNumberOfPair() {
@@ -45,5 +43,9 @@ public class DayPairMapping {
 
     public Pair getPair() {
         return pair;
+    }
+
+    public int getNumberOfWeek() {
+        return numberOfWeek;
     }
 }
