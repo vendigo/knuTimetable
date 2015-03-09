@@ -16,11 +16,8 @@ import ua.com.vendigo.knutimetable.service.timetable.TimeTableService;
 
 import java.util.List;
 
-/**
- * Created by Dmytro Marchenko on 10.01.2015.
- */
 @RestController
-@RequestMapping(value = "/")
+@RequestMapping(value = "/guest")
 public class GuestController {
 
     @Autowired

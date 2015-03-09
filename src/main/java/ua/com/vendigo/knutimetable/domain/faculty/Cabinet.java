@@ -36,4 +36,13 @@ public class Cabinet {
     public String getDescription() {
         return description;
     }
+
+    @Override
+    public String toString() {
+        return "Cabinet{" +
+                "id=" + id +
+                ", number='" + number + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
