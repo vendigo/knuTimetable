@@ -16,8 +16,7 @@
 
     <!-- Import js -->
     <script src="js/app.js"></script>
-    <script src="js/pageController.js"></script>
-    <script src="js/facultiesController.js"></script>
+    <script src="js/pageController.js"></script>    
 </head>
 <body>
 <div class="container" ng-app="knuTimeTable" ng-controller="pageController">
@@ -32,7 +31,7 @@
     <div class="page-header">    
     <ul class="nav nav-pills">
     <li ng-class="activeOn('main')"><a href ng-click="goTo('main')">Головна сторінка</a></li>
-    <li ng-class="activeOn('faculties')"><a href ng-click="goTo('faculties')">Список факультетів</a></li>
+    <li ng-class="activeOn('faculties')"><a href ng-click="goToFaculties()">Список факультетів</a></li>
     <li ng-class="activeOn('signIn')"><a href ng-click="goTo('signIn')">Увійти</a></li>    
     </ul>
     </div>    
@@ -41,6 +40,7 @@
     <div ng-show="isActive('main')" ng-include="'main.html'"></div>    
     <div ng-show="isActive('faculties')" ng-include="'faculties.html'"></div>    
     <div ng-show="isActive('signIn')" ng-include="'signIn.html'"></div>    
+    <div ng-show="isActive('timeTable')" ng-include="'timeTable.html'"></div>
 </div> 
 </body>
 </html>

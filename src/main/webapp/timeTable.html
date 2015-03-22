@@ -1,0 +1,23 @@
+<div ng-show="timeTable">
+	<h2>
+	{{timeTable.group.courseNumber}} курс, {{timeTable.group.name}} 
+	<span ng-show="timeTable.group.department">{{timeTable.group.department}}</span>
+	</h2>
+	<div class="list-group">		
+		<div class="list-group-item" ng-repeat="day in timeTable.days">
+			<h4 class="list-group-heading">{{day.dayOfWeek}}</h4>			
+			<div class="row">
+				<div class="col-sm-1"><strong>№ Пари</strong></div>					
+				<div class="col-sm-11"><strong>Пара</strong></div>
+			</div>
+			<div class="row" ng-repeat="dayPairMapping in day.dayPairMappingList | orderBy: 'numberOfPair'">					
+				<div class="col-sm-1">{{dayPairMapping.numberOfPair}}</div>					
+				<div class="col-sm-11">
+				{{dayPairMapping.pair.subject.name}}
+				<strong>{{dayPairMapping.pair.cabinet.number}}</strong><br />
+				<small>{{dayPairMapping.pair.teacher.name}}</small>
+				</div>
+			</div>
+		</div>		
+    </div>	
+</div>
