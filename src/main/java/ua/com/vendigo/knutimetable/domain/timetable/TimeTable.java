@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.util.List;
 
 /**
- * Created by Dmytro Marchenko on 10.01.2015.
  * Represents timetable for specific group for specific semester.
  */
 @Entity
