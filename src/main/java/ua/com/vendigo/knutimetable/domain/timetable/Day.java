@@ -1,8 +1,7 @@
 package ua.com.vendigo.knutimetable.domain.timetable;
 
-import ua.com.vendigo.knutimetable.domain.time.DayOfWeek;
-
 import javax.persistence.*;
+import java.time.DayOfWeek;
 import java.util.List;
 
 /**
@@ -20,7 +19,7 @@ public class Day {
     private DayOfWeek dayOfWeek;
     @OneToMany
     @JoinColumn(name = "DAY_ID")
-    private List<DayPairMapping> dayPairMappingList;
+    private List<DayPairMapping> dayPairMappings;
 
     public Day() {
     }
@@ -37,7 +36,7 @@ public class Day {
         return dayOfWeek;
     }
 
-    public List<DayPairMapping> getDayPairMappingList() {
-        return dayPairMappingList;
+    public List<DayPairMapping> getDayPairMappings() {
+        return dayPairMappings;
     }
 }

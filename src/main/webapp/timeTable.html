@@ -10,7 +10,7 @@
 				<div class="col-sm-1"><strong>№ Пари</strong></div>					
 				<div class="col-sm-11"><strong>Пара</strong></div>
 			</div>
-			<div class="row" ng-repeat="dayPairMapping in day.dayPairMappingList | orderBy: 'numberOfPair'">					
+			<div class="row" ng-repeat="dayPairMapping in day.dayPairMappings | orderBy: 'numberOfPair'">
 				<div class="col-sm-1">{{dayPairMapping.numberOfPair}}</div>					
 				<div class="col-sm-11">
 				{{dayPairMapping.pair.subject.name}}

@@ -39,4 +39,8 @@ public class TimeSettings {
         this.pairTimes = pairTimes;
         this.oddWeekDate = oddWeekDate;
     }
+
+    public LocalDate getOddWeekDate() {
+        return oddWeekDate;
+    }
 }

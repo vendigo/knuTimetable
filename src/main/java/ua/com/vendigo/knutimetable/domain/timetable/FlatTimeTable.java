@@ -1,9 +1,8 @@
 package ua.com.vendigo.knutimetable.domain.timetable;
 
 import ua.com.vendigo.knutimetable.domain.pair.FlatPair;
-import ua.com.vendigo.knutimetable.domain.pair.Pair;
-import ua.com.vendigo.knutimetable.domain.time.DayOfWeek;
 
+import java.time.DayOfWeek;
 import java.util.Map;
 
 import static utils.Validator.isValidCourseNumber;
