@@ -12,7 +12,6 @@ public class Group {
     @Id
     @GeneratedValue
     private Integer id;
-    @Column(nullable = false)
     private int courseNumber;
     @Column(nullable = false)
     private String name;

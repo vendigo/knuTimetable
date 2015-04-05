@@ -19,7 +19,6 @@ public class FlatTimeTableCreator {
     public static FlatTimeTable createFlatTimeTable(TimeTable timeTable) {
         String groupName = timeTable.getGroup().getName();
         int courseNumber = timeTable.getGroup().getCourseNumber();
-        boolean oddWeek = isOddWeek(timeTable);
         Map<DayOfWeek, Map<Integer, FlatPair>> pairs = createFlatPairs(timeTable);
 
         return new FlatTimeTable(groupName, courseNumber, pairs);
@@ -29,29 +28,35 @@ public class FlatTimeTableCreator {
         LocalDate now = LocalDate.now();
         LocalDate oddWeekDate = timeTable.getTimeSettings().getOddWeekDate();
 
-        //Determine whether currentWeek is Odd
+        int daysDiff = Math.abs(now.getDayOfYear() - oddWeekDate.getDayOfYear());
+        int weeksDiff = daysDiff/7;
 
-        return false;
+        return weeksDiff%2 != 0;
     }
 
     private static Map<DayOfWeek, Map<Integer, FlatPair>> createFlatPairs(TimeTable timeTable) {
         Map<DayOfWeek, Map<Integer, FlatPair>> resultMap = new HashMap<>();
+        boolean oddWeek = isOddWeek(timeTable);
 
         List<Day> days = timeTable.getDays();
         for (Day day : days) {
             List<DayPairMapping> dayPairMapping = day.getDayPairMappings();
-            Map<Integer, FlatPair> dayFlatPairs = createDayFlatPairs(dayPairMapping);
+            Map<Integer, FlatPair> dayFlatPairs = createDayFlatPairs(dayPairMapping, oddWeek);
             resultMap.put(day.getDayOfWeek(), dayFlatPairs);
         }
 
         return resultMap;
     }
 
-    private static Map<Integer, FlatPair> createDayFlatPairs(List<DayPairMapping> dayPairMapping) {
+    private static Map<Integer, FlatPair> createDayFlatPairs(List<DayPairMapping> dayPairMapping, boolean oddWeek) {
         Map<Integer, FlatPair> resultMap = new HashMap<>();
 
-        //Create flatPairs mapping
-
+        for (DayPairMapping pairMapping : dayPairMapping) {
+            if (pairMapping.isOddWeek() == oddWeek) {
+                FlatPair flatPair = FlatPairCreator.createFlatPair(pairMapping.getPair());
+                resultMap.put(pairMapping.getNumberOfPair(), flatPair);
+            }
+        }
         return resultMap;
     }
 }

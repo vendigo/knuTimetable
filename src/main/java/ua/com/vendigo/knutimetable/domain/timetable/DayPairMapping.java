@@ -14,22 +14,17 @@ public class DayPairMapping {
     @Id
     @GeneratedValue
     private Integer id;
-    @Column(nullable = false)
     private int numberOfPair;
-    /**
-     * Indicates whether this mapping belongs to odd or even week.
-     */
-    @Column(nullable = false)
-    private int numberOfWeek;
+    private boolean oddWeek;
     @ManyToOne
     private Pair pair;
 
     public DayPairMapping() {
     }
 
-    public DayPairMapping(int numberOfPair, int numberOfWeek, Pair pair) {
+    public DayPairMapping(int numberOfPair, boolean oddWeek, Pair pair) {
         this.numberOfPair = numberOfPair;
-        this.numberOfWeek = numberOfWeek;
+        this.oddWeek = oddWeek;
         this.pair = pair;
     }
 
@@ -45,7 +40,7 @@ public class DayPairMapping {
         return pair;
     }
 
-    public int getNumberOfWeek() {
-        return numberOfWeek;
+    public boolean isOddWeek() {
+        return oddWeek;
     }
 }

@@ -26,16 +26,11 @@ public class AdditionalPair {
     @JsonSerialize(using = LocalDateSerializer.class)
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     private LocalDate date;
-
     @ManyToOne(optional = false)
     private TimeTable timeTable;
-
-    @Column(nullable = false)
     private int pairNumber;
-
     @ManyToOne(optional = false)
     private Pair pair;
-
     @Column
     private String description;
 

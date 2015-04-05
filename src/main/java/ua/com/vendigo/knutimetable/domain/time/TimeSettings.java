@@ -40,6 +40,10 @@ public class TimeSettings {
         this.oddWeekDate = oddWeekDate;
     }
 
+    public Map<Integer, PairTime> getPairTimes() {
+        return pairTimes;
+    }
+
     public LocalDate getOddWeekDate() {
         return oddWeekDate;
     }

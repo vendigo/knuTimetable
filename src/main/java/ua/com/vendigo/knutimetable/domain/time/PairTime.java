@@ -20,8 +20,6 @@ public class PairTime {
     @Id
     @GeneratedValue
     private Integer id;
-
-    @Column(nullable = false)
     private int pairNumber;
 
     @Column(nullable = false)
@@ -58,5 +56,25 @@ public class PairTime {
         this.timeBreak = timeBreak;
         this.timeBreakEnd = timeBreakEnd;
         this.timeEnd = timeEnd;
+    }
+
+    public int getPairNumber() {
+        return pairNumber;
+    }
+
+    public LocalTime getTimeBegin() {
+        return timeBegin;
+    }
+
+    public LocalTime getTimeBreak() {
+        return timeBreak;
+    }
+
+    public LocalTime getTimeBreakEnd() {
+        return timeBreakEnd;
+    }
+
+    public LocalTime getTimeEnd() {
+        return timeEnd;
     }
 }
