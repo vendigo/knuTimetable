@@ -2,8 +2,6 @@ package ua.com.vendigo.knutimetable.domain.timetable;
 
 import ua.com.vendigo.knutimetable.domain.pair.FlatPair;
 
-import java.util.Optional;
-
 /**
  * Contains information only about current (or closest) and next pair.
  */
@@ -16,11 +14,11 @@ public class SnapshotTimeTable {
         this.nextPair = nextPair;
     }
 
-    public Optional<FlatPair> getCurrentPair() {
-        return Optional.ofNullable(currentPair);
+    public FlatPair getCurrentPair() {
+        return currentPair;
     }
 
-    public Optional<FlatPair> getNextPair() {
-        return Optional.ofNullable(nextPair);
+    public FlatPair getNextPair() {
+        return nextPair;
     }
 }

@@ -15,6 +15,7 @@ import java.util.Map;
 /**
  * Creates {@link ua.com.vendigo.knutimetable.domain.timetable.FlatTimeTable} from {@link ua.com.vendigo.knutimetable.domain.timetable.TimeTable}.
  */
+
 public class FlatTimeTableCreator {
     public static FlatTimeTable createFlatTimeTable(TimeTable timeTable) {
         String groupName = timeTable.getGroup().getName();

@@ -12,7 +12,6 @@ import ua.com.vendigo.knutimetable.domain.timetable.TimeTable;
 import java.time.DayOfWeek;
 import java.util.Map;
 
-
 /**
  * Creates {@link ua.com.vendigo.knutimetable.domain.timetable.SnapshotTimeTable} from
  * {@link ua.com.vendigo.knutimetable.domain.timetable.TimeTable}
@@ -34,10 +33,9 @@ public class SnapshotTimeTableCreator {
 
         if (todayPairs != null) {
             int currentPairNumber = defineCurrentPairNumber(timeTable);
-            int nextPairNumber = currentPairNumber + 1;
-
-            currentPair = todayPairs.get(currentPairNumber);
-            nextPair = todayPairs.get(nextPairNumber);
+                int nextPairNumber = currentPairNumber + 1;
+                currentPair = todayPairs.get(currentPairNumber);
+                nextPair = todayPairs.get(nextPairNumber);
         }
 
         return new SnapshotTimeTable(currentPair, nextPair);

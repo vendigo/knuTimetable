@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import ua.com.vendigo.knutimetable.domain.faculty.Department;
 import ua.com.vendigo.knutimetable.domain.faculty.Faculty;
 import ua.com.vendigo.knutimetable.domain.faculty.Group;
-import ua.com.vendigo.knutimetable.domain.timetable.TimeTable;
+import ua.com.vendigo.knutimetable.domain.timetable.FlatTimeTable;
+import ua.com.vendigo.knutimetable.domain.timetable.SnapshotTimeTable;
 import ua.com.vendigo.knutimetable.service.faculty.DepartmentService;
 import ua.com.vendigo.knutimetable.service.faculty.FacultyService;
 import ua.com.vendigo.knutimetable.service.faculty.GroupService;
@@ -49,8 +50,13 @@ public class GuestController {
         return groupService.findOne(groupId);
     }
 
-    @RequestMapping(value = "/group/{groupId}/actualTimeTable", method = RequestMethod.GET)
-    TimeTable getActualTimeTableForGroup(@PathVariable int groupId) {
-        return timeTableService.getActualTimeTableForGroup(groupId);
+    @RequestMapping(value = "/group/{groupId}/timeTable", method = RequestMethod.GET)
+    FlatTimeTable getTimeTableForGroup(@PathVariable int groupId) {
+        return timeTableService.getFlatTimeTableForGroup(groupId);
+    }
+
+    @RequestMapping(value = "/group/{groupId}/currentPair", method = RequestMethod.GET)
+    SnapshotTimeTable getCurrentPairForGroup(@PathVariable int groupId) {
+        return timeTableService.getSnapshotTimeTableForGroup(groupId);
     }
 }
