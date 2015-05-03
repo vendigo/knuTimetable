@@ -1,19 +1,6 @@
-app.controller('pageController', function($scope, $http) {
-	/*Init*/
-	$scope.activePage = 'main';
+ttControllers = ttapp.module("ttControllers");
 
-	/*Returns true if given page is active*/
-	$scope.isActive = function(page) {
-		return $scope.activePage === page;
-	};
-	/*Returns class="active" if given page is active*/
-	$scope.activeOn = function(page) {
-		return {'active': $scope.activePage === page};
-	};
-	/*Changes activePage to given*/
-	$scope.goTo = function(page) {
-		$scope.activePage = page;		
-	};
+ttControllers.controller('pageController', function($scope, $http) {
 
 	/*FACULTIES PART*/
 	/*Get Faculties from server*/	

@@ -10,37 +10,31 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
     <!-- Import Angular -->
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>
     <!-- Import js -->
     <script src="js/app.js"></script>
-    <script src="js/pageController.js"></script>    
+    <script src="js/controllers.js"></script>
 </head>
 <body>
-<div class="container" ng-app="knuTimeTable" ng-controller="pageController">
+<div class="container" ng-app="knuTimeTable">
 
-    <!-- Jumbotron -->
     <div class="jumbotron">        
         <h1>КНУ Розклад</h1>
-        <p>Перший інтерактивний розклад пар для студентів КНУ ім. Тараса Шевченка</p>        
+        <p>Інтерактивний розклад пар для студентів КНУ ім. Тараса Шевченка</p>
     </div>
     
     <!-- Menu -->
     <div class="page-header">    
     <ul class="nav nav-pills">
-    <li ng-class="activeOn('main')"><a href ng-click="goTo('main')">Головна сторінка</a></li>
-    <li ng-class="activeOn('faculties')"><a href ng-click="goToFaculties()">Список факультетів</a></li>
-    <li ng-class="activeOn('signIn')"><a href ng-click="goTo('signIn')">Увійти</a></li>    
+    <li><a href="#/">Головна сторінка</a></li>
+    <li><a href="#/faculties">Список факультетів</a></li>
     </ul>
     </div>    
 
-    <!-- Pages -->    
-    <div ng-show="isActive('main')" ng-include="'main.html'"></div>    
-    <div ng-show="isActive('faculties')" ng-include="'faculties.html'"></div>    
-    <div ng-show="isActive('signIn')" ng-include="'signIn.html'"></div>    
-    <div ng-show="isActive('timeTable')" ng-include="'timeTable.html'"></div>
+    <div ng-view></div>
+
 </div> 
 </body>
 </html>
