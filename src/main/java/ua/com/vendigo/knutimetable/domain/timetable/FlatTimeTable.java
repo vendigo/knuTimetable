@@ -5,9 +5,9 @@ import ua.com.vendigo.knutimetable.domain.pair.FlatPair;
 import java.time.DayOfWeek;
 import java.util.Map;
 
-import static utils.Validator.isValidCourseNumber;
-import static utils.Validator.notEmpty;
-import static utils.Validator.notNull;
+import static ua.com.vendigo.knutimetable.utils.Validator.isValidCourseNumber;
+import static ua.com.vendigo.knutimetable.utils.Validator.notEmpty;
+import static ua.com.vendigo.knutimetable.utils.Validator.notNull;
 
 /**
  * Flat View for {@link ua.com.vendigo.knutimetable.domain.timetable.TimeTable}.

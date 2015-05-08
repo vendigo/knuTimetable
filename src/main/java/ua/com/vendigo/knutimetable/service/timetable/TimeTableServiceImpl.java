@@ -6,8 +6,8 @@ import ua.com.vendigo.knutimetable.domain.timetable.FlatTimeTable;
 import ua.com.vendigo.knutimetable.domain.timetable.SnapshotTimeTable;
 import ua.com.vendigo.knutimetable.domain.timetable.TimeTable;
 import ua.com.vendigo.knutimetable.repository.timetable.TimeTableRepository;
-import utils.FlatTimeTableCreator;
-import utils.SnapshotTimeTableCreator;
+import ua.com.vendigo.knutimetable.utils.FlatTimeTableCreator;
+import ua.com.vendigo.knutimetable.utils.SnapshotTimeTableCreator;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -39,12 +39,12 @@ public class TimeTableServiceImpl implements TimeTableService {
 
     @Override
     public FlatTimeTable getFlatTimeTableForGroup(Integer groupId) {
-        return FlatTimeTableCreator.createFlatTimeTable(getFullTimeTableForGroup(groupId));
+        return flatTimeTableCreator.createFlatTimeTable(getFullTimeTableForGroup(groupId));
     }
 
     @Override
     public SnapshotTimeTable getSnapshotTimeTableForGroup(Integer groupId) {
-        return SnapshotTimeTableCreator.createSnapshotTimeTable(getFullTimeTableForGroup(groupId));
+        return snapshotTimeTableCreator.createSnapshotTimeTable(getFullTimeTableForGroup(groupId));
     }
 
     @Override

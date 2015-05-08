@@ -1,6 +1,7 @@
-package utils;
+package ua.com.vendigo.knutimetable.utils;
 
 import org.joda.time.LocalDate;
+import org.springframework.beans.factory.annotation.Autowired;
 import ua.com.vendigo.knutimetable.domain.pair.FlatPair;
 import ua.com.vendigo.knutimetable.domain.timetable.Day;
 import ua.com.vendigo.knutimetable.domain.timetable.DayPairMapping;
@@ -15,9 +16,12 @@ import java.util.Map;
 /**
  * Creates {@link ua.com.vendigo.knutimetable.domain.timetable.FlatTimeTable} from {@link ua.com.vendigo.knutimetable.domain.timetable.TimeTable}.
  */
-
 public class FlatTimeTableCreator {
-    public static FlatTimeTable createFlatTimeTable(TimeTable timeTable) {
+
+    @Autowired
+    private FlatPairCreator flatPairCreator;
+
+    public FlatTimeTable createFlatTimeTable(TimeTable timeTable) {
         String groupName = timeTable.getGroup().getName();
         int courseNumber = timeTable.getGroup().getCourseNumber();
         Map<DayOfWeek, Map<Integer, FlatPair>> pairs = createFlatPairs(timeTable);
@@ -25,7 +29,7 @@ public class FlatTimeTableCreator {
         return new FlatTimeTable(groupName, courseNumber, pairs);
     }
 
-    private static boolean isOddWeek(TimeTable timeTable) {
+    private boolean isOddWeek(TimeTable timeTable) {
         LocalDate now = LocalDate.now();
         LocalDate oddWeekDate = timeTable.getTimeSettings().getOddWeekDate();
 
@@ -35,7 +39,7 @@ public class FlatTimeTableCreator {
         return weeksDiff%2 != 0;
     }
 
-    private static Map<DayOfWeek, Map<Integer, FlatPair>> createFlatPairs(TimeTable timeTable) {
+    private Map<DayOfWeek, Map<Integer, FlatPair>> createFlatPairs(TimeTable timeTable) {
         Map<DayOfWeek, Map<Integer, FlatPair>> resultMap = new HashMap<>();
         boolean oddWeek = isOddWeek(timeTable);
 
@@ -49,12 +53,12 @@ public class FlatTimeTableCreator {
         return resultMap;
     }
 
-    private static Map<Integer, FlatPair> createDayFlatPairs(List<DayPairMapping> dayPairMapping, boolean oddWeek) {
+    private Map<Integer, FlatPair> createDayFlatPairs(List<DayPairMapping> dayPairMapping, boolean oddWeek) {
         Map<Integer, FlatPair> resultMap = new HashMap<>();
 
         for (DayPairMapping pairMapping : dayPairMapping) {
             if (pairMapping.isOddWeek() == oddWeek) {
-                FlatPair flatPair = FlatPairCreator.createFlatPair(pairMapping.getPair());
+                FlatPair flatPair = flatPairCreator.createFlatPair(pairMapping.getPair());
                 resultMap.put(pairMapping.getNumberOfPair(), flatPair);
             }
         }

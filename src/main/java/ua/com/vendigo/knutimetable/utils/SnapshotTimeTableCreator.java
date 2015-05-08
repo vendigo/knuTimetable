@@ -1,7 +1,9 @@
-package utils;
+package ua.com.vendigo.knutimetable.utils;
 
 import org.joda.time.LocalDateTime;
 import org.joda.time.LocalTime;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import ua.com.vendigo.knutimetable.domain.pair.FlatPair;
 import ua.com.vendigo.knutimetable.domain.time.PairTime;
 import ua.com.vendigo.knutimetable.domain.time.TimeSettings;
@@ -16,15 +18,19 @@ import java.util.Map;
  * Creates {@link ua.com.vendigo.knutimetable.domain.timetable.SnapshotTimeTable} from
  * {@link ua.com.vendigo.knutimetable.domain.timetable.TimeTable}
  */
+@Component("snapshotTimeTableCreator")
 public class SnapshotTimeTableCreator {
 
     public static final int NO_PAIR = -1;
 
-    public static SnapshotTimeTable createSnapshotTimeTable(TimeTable timeTable) {
+    @Autowired
+    private FlatTimeTableCreator flatTimeTableCreator;
+
+    public SnapshotTimeTable createSnapshotTimeTable(TimeTable timeTable) {
         LocalDateTime now = LocalDateTime.now();
         DayOfWeek dayOfWeek = DayOfWeek.of(now.getDayOfWeek());
 
-        FlatTimeTable flatTimeTable = FlatTimeTableCreator.createFlatTimeTable(timeTable);
+        FlatTimeTable flatTimeTable = flatTimeTableCreator.createFlatTimeTable(timeTable);
         Map<DayOfWeek, Map<Integer, FlatPair>> pairs = flatTimeTable.getPairs();
         Map<Integer, FlatPair> todayPairs = pairs.get(dayOfWeek);
 

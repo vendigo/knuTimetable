@@ -1,6 +1,6 @@
 package ua.com.vendigo.knutimetable.domain.pair;
 
-import static utils.Validator.*;
+import static ua.com.vendigo.knutimetable.utils.Validator.*;
 
 /**
  * Flat view for {@link ua.com.vendigo.knutimetable.domain.pair.Pair}.

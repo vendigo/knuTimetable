@@ -1,45 +1,16 @@
-ttControllers = ttapp.module("ttControllers");
+var ttControllers = angular.module("ttControllers", []);
 
-ttControllers.controller('pageController', function($scope, $http) {
+ttControllers.controller('MainPageCtrl', ['$scope', function ($scope) {
+}]);
 
-	/*FACULTIES PART*/
-	/*Get Faculties from server*/	
-	$scope.loadFaculties = function() {
-		$http.get('/guest/faculty').success(function(response) {
-		$scope.faculties = response;
-		});
-	};
-	/*Returns true if faculties are loaded and there is no active faculty*/
-	$scope.isListFaculties = function() {
-		return $scope.faculties && $scope.activeFaculty === '';
-	};
-	/*Returns true if faculties are loaded and there is active faculty*/
-	$scope.isFaculty = function() {
-		return $scope.faculties && $scope.activeFaculty != '';
-	};
-	/*Changes activeFaculty to given*/
-	$scope.goToFaculty = function(faculty) {
-		return $scope.activeFaculty = faculty;
-	};
-	/*Goes to faculties page*/
-	$scope.goToFaculties = function() {
-			$scope.goTo('faculties');
-			$scope.loadFaculties();
-			$scope.goToFaculty('');
-		};
+ttControllers.controller('FacultiesCtrl', ['$scope', 'Faculties', function ($scope, Faculties) {
+    $scope.faculties = Faculties.query();
+}]);
 
-	/*TIMETABLE PART	*/
-	/*Loads actualTimeTable for given group*/
-	$scope.loadTimeTable = function(group) {
-		var request = '/guest/group/'+group.id+'/actualTimeTable';
-		$http.get(request).success(function(response) {
-		$scope.timeTable = response;
-		});
-	};
-	$scope.goToTimeTable = function(group) {
-		$scope.goTo('timeTable');
-		$scope.loadTimeTable(group);		
-		};
-	
-});
+ttControllers.controller('FacultyCtrl', ['$scope', '$routeParams', 'Faculty', function ($scope, $routeParams, Faculty) {
+    $scope.faculty = Faculty.get({facultyId: $routeParams.facultyId});
+}]);
 
+ttControllers.controller('TimeTableCtrl', ['$scope', '$routeParams', 'TimeTable', function ($scope, $routeParams, TimeTable) {
+    $scope.timeTable = TimeTable.get({groupId: $routeParams.groupId});
+}]);

@@ -1,33 +1,7 @@
-<div>		
-	<!-- List of faculties -->
-	<ul class="list-group" ng-show="isListFaculties()">	 
+<div>
+	<ul class="list-group">
 	 <li class="list-group-item" ng-repeat="faculty in faculties">
-	 	<h4><a href ng-click="goToFaculty(faculty)">{{faculty.name}}</a></h4>
+	 	<h4><a ng-href="#/faculty/{{faculty.id}}">{{faculty.name}}</a></h4>
 	 </li>	 
 	</ul>
-
-	<!-- One faculty	 -->
-	<div ng-show="isFaculty()">
-		<h2>{{activeFaculty.name}}</h2>
-		<p>{{activeFaculty.description}}</p>		
-		<!-- Groups -->
-		<h3>Список груп</h3>
-		<table class="table table-hover">
-		<thead>
-			<th>Курс</th>
-			<th>Група</th>
-			<th>Кафедра</th>
-			<th>Розклад</th>
-		</thead>
-		<tbody>		
-			<tr ng-repeat="group in activeFaculty.groups | orderBy: 'courseNumber'" ng-click="alert('Oppa!')">
-				<td>{{group.courseNumber}}</td>
-				<td>{{group.name}}</td>
-				<td>{{group.department.name}}</td>
-				<td><button type="button" class="btn btn-primary" ng-click="goToTimeTable(group)"><span class="glyphicon glyphicon-th-list"></span></button></td>
-			</tr>
-		</tbody>
-	</div>
-
-
 </div> 

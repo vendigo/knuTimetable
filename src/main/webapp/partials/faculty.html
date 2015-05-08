@@ -1,0 +1,24 @@
+<div>
+    <h2>{{faculty.name}}</h2>
+    <p>{{faculty.description}}</p>
+    <h3>Список груп</h3>
+    <table class="table table-hover">
+        <thead>
+        <th>Курс</th>
+        <th>Група</th>
+        <th>Кафедра</th>
+        <th>Розклад</th>
+        </thead>
+        <tbody>
+        <tr ng-repeat="group in faculty.groups | orderBy: 'courseNumber'">
+            <td>{{group.courseNumber}}</td>
+            <td>{{group.name}}</td>
+            <td>{{group.department.name}}</td>
+            <td>
+                <a ng-href="#/timeTable/forGroup/{{group.id}}" class="btn btn-info" role="button"><span
+                        class="glyphicon glyphicon-th-list"></span></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

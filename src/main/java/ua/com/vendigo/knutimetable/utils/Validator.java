@@ -1,4 +1,4 @@
-package utils;
+package ua.com.vendigo.knutimetable.utils;
 
 /**
  * Provides static methods for validation input data.
