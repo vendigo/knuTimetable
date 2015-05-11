@@ -16,7 +16,7 @@ ttServices.factory('Faculty', ['$resource',
 
 ttServices.factory('TimeTable', ['$resource',
     function ($resource) {
-        return $resource('/flat/forGroup/:groupId', {}, {
+        return $resource('/timetable/full/forGroup/:groupId', {}, {
             query: {method: 'GET', params: {groupId:'timeTable'} ,isArray: true}
         });
     }]);

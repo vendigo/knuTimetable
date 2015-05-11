@@ -1,4 +1,4 @@
-var ttApp = angular.module('knuTimeTable', ['ngRoute', 'ttControllers', 'ttServices']);
+var ttApp = angular.module('knuTimeTable', ['ngRoute', 'ttControllers', 'ttServices', 'ttFilters', 'ttDirectives']);
 
 ttApp.config(['$routeProvider',
     function($routeProvider) {

@@ -1,14 +1,14 @@
-<div>
+<div ng-show="timeTable.group">
 	<h2>
-	{{timeTable.group.courseNumber}} курс, {{timeTable.group.name}} 
+	{{timeTable.group.courseNumber}} курс, {{timeTable.group.name}}
 	<span ng-show="timeTable.group.department">{{timeTable.group.department}}</span>
 	</h2>
 	<div class="list-group">		
 		<div class="list-group-item" ng-repeat="day in timeTable.days">
-			<h4 class="list-group-heading">{{day.dayOfWeek}}</h4>			
+			<h4 class="list-group-heading">{{day.dayOfWeek | dayOfWeek}}</h4>
 			<div class="row">
-				<div class="col-sm-1"><strong>№ Пари</strong></div>					
-				<div class="col-sm-11"><strong>Пара</strong></div>
+				<div class="col-sm-1"><strong>№</strong></div>
+				<div class="col-sm-11"><strong>Предмет</strong></div>
 			</div>
 			<div class="row" ng-repeat="dayPairMapping in day.dayPairMappings | orderBy: 'numberOfPair'">
 				<div class="col-sm-1">{{dayPairMapping.numberOfPair}}</div>					
@@ -20,4 +20,9 @@
 			</div>
 		</div>		
     </div>	
+</div>
+
+<div ng-hide="timeTable.group">
+	<h1>Розклад відсутній</h1>
+	<h4 tt-Back></h4>
 </div>
