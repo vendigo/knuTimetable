@@ -1,4 +1,4 @@
-package ua.com.vendigo.knutimetable.service.timetable;
+package ua.com.vendigo.knutimetable.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -6,6 +6,7 @@ import ua.com.vendigo.knutimetable.domain.timetable.FlatTimeTable;
 import ua.com.vendigo.knutimetable.domain.timetable.SnapshotTimeTable;
 import ua.com.vendigo.knutimetable.domain.timetable.TimeTable;
 import ua.com.vendigo.knutimetable.repository.timetable.TimeTableRepository;
+import ua.com.vendigo.knutimetable.service.TimeTableService;
 import ua.com.vendigo.knutimetable.utils.FlatTimeTableCreator;
 import ua.com.vendigo.knutimetable.utils.SnapshotTimeTableCreator;
 
@@ -45,25 +46,5 @@ public class TimeTableServiceImpl implements TimeTableService {
     @Override
     public SnapshotTimeTable getSnapshotTimeTableForGroup(Integer groupId) {
         return snapshotTimeTableCreator.createSnapshotTimeTable(getFullTimeTableForGroup(groupId));
-    }
-
-    @Override
-    public List<TimeTable> findAll() {
-        return timeTableRepository.findAll();
-    }
-
-    @Override
-    public TimeTable findOne(Integer timeTableId) {
-        return timeTableRepository.findOne(timeTableId);
-    }
-
-    @Override
-    public <S extends TimeTable> S save(S timeTable) {
-        return timeTableRepository.save(timeTable);
-    }
-
-    @Override
-    public void delete(Integer timeTableId) {
-        timeTableRepository.delete(timeTableId);
     }
 }

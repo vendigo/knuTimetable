@@ -1,6 +1,5 @@
 package ua.com.vendigo.knutimetable.utils;
 
-import org.springframework.stereotype.Component;
 import ua.com.vendigo.knutimetable.domain.pair.FlatPair;
 import ua.com.vendigo.knutimetable.domain.pair.Pair;
 import ua.com.vendigo.knutimetable.domain.pair.PairType;

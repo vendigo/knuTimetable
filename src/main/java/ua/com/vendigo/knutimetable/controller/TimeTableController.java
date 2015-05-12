@@ -1,4 +1,4 @@
-package ua.com.vendigo.knutimetable.controller.timetable;
+package ua.com.vendigo.knutimetable.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import ua.com.vendigo.knutimetable.domain.timetable.FlatTimeTable;
 import ua.com.vendigo.knutimetable.domain.timetable.TimeTable;
-import ua.com.vendigo.knutimetable.service.timetable.TimeTableService;
+import ua.com.vendigo.knutimetable.service.TimeTableService;
 import ua.com.vendigo.knutimetable.utils.FlatTimeTableCreator;
 
 @RestController
-@RequestMapping(value = "timetable")
+@RequestMapping(value = "timetables")
 public class TimeTableController {
 
     @Autowired

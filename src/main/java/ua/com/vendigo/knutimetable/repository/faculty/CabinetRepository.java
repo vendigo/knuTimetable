@@ -1,10 +1,7 @@
 package ua.com.vendigo.knutimetable.repository.faculty;
 
+import org.springframework.data.repository.PagingAndSortingRepository;
 import ua.com.vendigo.knutimetable.domain.faculty.Cabinet;
-import ua.com.vendigo.knutimetable.repository.GenericRepository;
 
-/**
- * Created by Dmytro Marchenko on 01.03.2015.
- */
-public interface CabinetRepository extends GenericRepository<Cabinet, Integer> {
+public interface CabinetRepository extends PagingAndSortingRepository<Cabinet, Integer> {
 }
