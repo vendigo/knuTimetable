@@ -1,6 +1,7 @@
 <div>
 	<ul class="list-group">
-	 <li class="list-group-item" ng-repeat="faculty in faculties._embedded.faculties">
+	 <li class="list-group-item" ng-repeat="faculty in faculties">
+		 {{faculty}}
 	 	<h4><a ng-href="#/faculty/{{faculty.id}}">{{faculty.name}}</a></h4>
 	 </li>	 
 	</ul>

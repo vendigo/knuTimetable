@@ -4,11 +4,20 @@ ttControllers.controller('MainPageCtrl', ['$scope', function ($scope) {
 }]);
 
 ttControllers.controller('FacultiesCtrl', ['$scope', 'Faculties', function ($scope, Faculties) {
-    $scope.faculties = Faculties.query();
+    var queryResult = Faculties.query();
+    queryResult.$promise.then(function(data) {
+        $scope.faculties = data._embedded.faculties;
+    })
 }]);
 
 ttControllers.controller('FacultyCtrl', ['$scope', '$routeParams', 'Faculty', function ($scope, $routeParams, Faculty) {
-    $scope.faculty = Faculty.get({facultyId: $routeParams.facultyId});
+    var queryResult = Faculty.get({facultyId: $routeParams.facultyId});
+
+    $scope.faculty = queryResult;
+
+    /*queryResult.$promise.then(function(data) {
+        $scope.faculty = data._embedded.faculty
+    });*/
 }]);
 
 ttControllers.controller('TimeTableCtrl', ['$scope', '$routeParams', 'TimeTable', function ($scope, $routeParams, TimeTable) {

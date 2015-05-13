@@ -10,7 +10,7 @@ ttServices.factory('Faculties', ['$resource',
 ttServices.factory('Faculty', ['$resource',
     function ($resource) {
         return $resource('/faculties/:facultyId', {}, {
-            query: {method: 'GET', params: {facultyId:'facultyId'} ,isArray: true}
+            query: {method: 'GET', params: {facultyId:'facultyId'} ,isArray: false}
         });
     }]);
 
