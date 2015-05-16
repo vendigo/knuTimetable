@@ -20,3 +20,19 @@ ttFilters.filter('dayOfWeek', function() {
         }
     }
 });
+
+ttFilters.filter('facultyLink', function() {
+    return function(input) {
+        var href = input._links.self.href;
+        href = href.replace("/faculties","/#/faculties");
+        return href;
+    }
+});
+
+ttFilters.filter('timeTableForGroupLink', function() {
+    return function(input) {
+        var href = input._links.self.href;
+        href = href.replace("groups","#/timeTable/forGroup");
+        return href;
+    }
+});

@@ -4,20 +4,20 @@ ttControllers.controller('MainPageCtrl', ['$scope', function ($scope) {
 }]);
 
 ttControllers.controller('FacultiesCtrl', ['$scope', 'Faculties', function ($scope, Faculties) {
-    var queryResult = Faculties.query();
-    queryResult.$promise.then(function(data) {
+    var facultiesPromise = Faculties.get();
+    facultiesPromise.$promise.then(function(data) {
         $scope.faculties = data._embedded.faculties;
     })
 }]);
 
-ttControllers.controller('FacultyCtrl', ['$scope', '$routeParams', 'Faculty', function ($scope, $routeParams, Faculty) {
-    var queryResult = Faculty.get({facultyId: $routeParams.facultyId});
+ttControllers.controller('FacultyCtrl', ['$scope', '$routeParams', 'Faculty', 'Groups', function ($scope, $routeParams, Faculty, Groups) {
+    $scope.faculty = Faculty.get({facultyId: $routeParams.facultyId});
 
-    $scope.faculty = queryResult;
+    var groupPromise = Groups.get({facultyId: $routeParams.facultyId});
+    groupPromise.$promise.then(function(data) {
+        $scope.groups = data._embedded.groups;
+    });
 
-    /*queryResult.$promise.then(function(data) {
-        $scope.faculty = data._embedded.faculty
-    });*/
 }]);
 
 ttControllers.controller('TimeTableCtrl', ['$scope', '$routeParams', 'TimeTable', function ($scope, $routeParams, TimeTable) {

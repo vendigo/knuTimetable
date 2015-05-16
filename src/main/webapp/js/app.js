@@ -7,7 +7,7 @@ ttApp.config(['$routeProvider',
                 templateUrl: 'partials/main-page.html',
                 controller: 'MainPageCtrl'
             }).
-            when('/faculty/:facultyId', {
+            when('/faculties/:facultyId', {
                 templateUrl: 'partials/faculty.html',
                 controller: 'FacultyCtrl'
             }).

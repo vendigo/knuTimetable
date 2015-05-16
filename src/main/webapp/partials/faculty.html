@@ -4,18 +4,16 @@
     <h3>Список груп</h3>
     <table class="table table-hover">
         <thead>
-        <th>Курс</th>
-        <th>Група</th>
-        <th>Кафедра</th>
-        <th>Розклад</th>
+        <th class="col-sm-1">Курс</th>
+        <th class="col-sm-6">Група</th>
+        <th class="col-sm-5">Розклад</th>
         </thead>
         <tbody>
-        <tr ng-repeat="group in faculty.groups | orderBy: 'courseNumber'">
+        <tr ng-repeat="group in groups | orderBy: 'courseNumber'">
             <td>{{group.courseNumber}}</td>
             <td>{{group.name}}</td>
-            <td>{{group.department.name}}</td>
             <td>
-                <a ng-href="#/timeTable/forGroup/{{group.id}}" class="btn btn-info" role="button"><span
+                <a ng-href="{{group|timeTableForGroupLink}}" class="btn btn-info" role="button"><span
                         class="glyphicon glyphicon-th-list"></span></a>
             </td>
         </tr>

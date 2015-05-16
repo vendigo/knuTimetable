@@ -5,3 +5,9 @@ ttDirectives.directive('ttBack', function() {
         template: '<a href="javascript:history.back()">Повернутися назад</a>'
     };
 });
+
+ttDirectives.directive('ttButtonBack', function() {
+    return {
+        template: '<a href="javascript:history.back()"><span class="glyphicon glyphicon-arrow-left"></span></a>'
+    };
+});

@@ -11,7 +11,7 @@ import ua.com.vendigo.knutimetable.service.TimeTableService;
 import ua.com.vendigo.knutimetable.utils.FlatTimeTableCreator;
 
 @RestController
-@RequestMapping(value = "timetables")
+@RequestMapping(value = "timetable")
 public class TimeTableController {
 
     @Autowired
