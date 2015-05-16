@@ -1,29 +1,36 @@
-<div ng-show="timeTable.group">
-	<h2>
-	<tt-button-back></tt-button-back>
-	{{timeTable.group.courseNumber}} курс, {{timeTable.group.name}}
-	<span ng-show="timeTable.group.department">{{timeTable.group.department}}</span>
-	</h2>
-	<div class="list-group">		
-		<div class="list-group-item" ng-repeat="day in timeTable.days">
-			<h4 class="list-group-heading">{{day.dayOfWeek | dayOfWeek}}</h4>
-			<div class="row">
-				<div class="col-sm-1"><strong>№</strong></div>
-				<div class="col-sm-11"><strong>Предмет</strong></div>
-			</div>
-			<div class="row" ng-repeat="dayPairMapping in day.dayPairMappings | orderBy: 'numberOfPair'">
-				<div class="col-sm-1">{{dayPairMapping.numberOfPair}}</div>					
-				<div class="col-sm-11">
-				{{dayPairMapping.pair.subject.name}}
-				<strong>{{dayPairMapping.pair.cabinet.number}}</strong><br />
-				<small>{{dayPairMapping.pair.teacher.name}}</small>
-				</div>
-			</div>
-		</div>		
-    </div>	
-</div>
+<div ng-show="group">
+    <h2>
+        <tt-button-back></tt-button-back>
+        {{group.courseNumber}} курс, {{group.name}}
+        <span ng-show="group.department">{{group.department}}</span>
+    </h2>
 
-<div ng-hide="timeTable.group">
-	<h1>Розклад відсутній</h1>
-	<h4 tt-Back></h4>
+    <table class="table table-bordered">
+        <tr ng-repeat="pair in pairs">
+            <td>{{pair.subject}}</td>
+        </tr>
+     </table>
+
+        <!--<tr ng-repeat="pair in pairs">
+            <td>
+                <tr>
+                    <td>{{pair.dayOfWeek}}</td>
+                </tr>
+            <tr>
+            <td>
+                <tr>
+                    <td>{{pair.numberOfPair}}</td>
+                    <td>{{pair.subject}} <b>{{pair.cabinet}}</b><br/>
+                        {{pair.teacher}}
+                    </td>
+                </tr>
+            </td>
+        </tr>-->
+    </table>
+
+    <div ng-hide="pairs">
+        <h1>Розклад відсутній</h1>
+        <h4 tt-Back></h4>
+    </div>
+
 </div>

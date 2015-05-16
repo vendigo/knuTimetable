@@ -4,8 +4,7 @@ ttApp.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
             when('/', {
-                templateUrl: 'partials/main-page.html',
-                controller: 'MainPageCtrl'
+                templateUrl: 'partials/main-page.html'
             }).
             when('/faculties/:facultyId', {
                 templateUrl: 'partials/faculty.html',
@@ -15,7 +14,7 @@ ttApp.config(['$routeProvider',
                 templateUrl: 'partials/faculties.html',
                 controller: 'FacultiesCtrl'
             }).
-            when('/timeTable/forGroup/:groupId', {
+            when('/groups/:groupId/timetable', {
                 templateUrl: 'partials/time-table.html',
                 controller: 'TimeTableCtrl'
             }).

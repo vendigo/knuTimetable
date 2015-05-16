@@ -1,8 +1,5 @@
 var ttControllers = angular.module("ttControllers", []);
 
-ttControllers.controller('MainPageCtrl', ['$scope', function ($scope) {
-}]);
-
 ttControllers.controller('FacultiesCtrl', ['$scope', 'Faculties', function ($scope, Faculties) {
     var facultiesPromise = Faculties.get();
     facultiesPromise.$promise.then(function(data) {
@@ -20,6 +17,12 @@ ttControllers.controller('FacultyCtrl', ['$scope', '$routeParams', 'Faculty', 'G
 
 }]);
 
-ttControllers.controller('TimeTableCtrl', ['$scope', '$routeParams', 'TimeTable', function ($scope, $routeParams, TimeTable) {
-    $scope.timeTable = TimeTable.get({groupId: $routeParams.groupId});
+ttControllers.controller('TimeTableCtrl', ['$scope', '$routeParams', 'TimeTable', 'Group', function ($scope, $routeParams, TimeTable, Group) {
+    $scope.group = Group.get({groupId: $routeParams.groupId});
+
+    var timeTablePromise = TimeTable.get({groupId: $routeParams.groupId});
+    timeTablePromise.$promise.then(function(data) {
+        $scope.pairs = data._embedded.pairs;
+    });
+
 }]);

@@ -21,9 +21,16 @@ ttServices.factory('Groups', ['$resource',
         });
     }]);
 
+ttServices.factory('Group', ['$resource',
+    function ($resource) {
+        return $resource('/groups/:groupId', {}, {
+            query: {method: 'GET', params: {groupId:'groupId'}}
+        });
+    }]);
+
 ttServices.factory('TimeTable', ['$resource',
     function ($resource) {
-        return $resource('/timetables/full/forGroup/:groupId', {}, {
-            query: {method: 'GET', params: {groupId:'timeTable'} ,isArray: true}
+        return $resource('groups/:groupId/pairs', {}, {
+            query: {method: 'GET', params: {groupId:'groupId'}}
         });
     }]);
