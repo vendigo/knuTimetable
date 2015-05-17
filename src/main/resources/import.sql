@@ -7,4 +7,6 @@ INSERT INTO PUBLIC.FACULTIES (ID, DESCRIPTION, NAME) VALUES (4, '', 'Факул�
 -- 2 Groups
 INSERT INTO PUBLIC.GROUPS (ID, FACULTY_ID, COURSE_NUMBER, NAME, DEPARTMENT, DESCRIPTION) VALUES (1, 1, 1, '1 група математики', null, null);
 -- 10 Pairs
-INSERT INTO PUBLIC.PAIRS (ID, GROUP_ID, WEEK_STATUS, DAY_OF_WEEK, NUMBER_OF_PAIR, SUBJECT, PAIR_TYPE, EXAM_TYPE, TEACHER, CABINET) VALUES (1, 1, 'ALWAYS', 'MONDAY', 1, 'Математичний аналіз', 'LECTURE', 'EXAM', 'Назаренко М. О.', 42);
+INSERT INTO PUBLIC.PAIRS (ID, GROUP_ID, WEEK_STATUS, DAY_OF_WEEK, NUMBER_OF_PAIR, SUBJECT, PAIR_TYPE, EXAM_TYPE, TEACHER, CABINET) VALUES (1, 1, 'ALWAYS', 'MONDAY', 1, 'Математичний аналіз', 'LECTURE', 'EXAM', 'Назаренко М. О.', '42');
+INSERT INTO PUBLIC.PAIRS (ID, GROUP_ID, WEEK_STATUS, DAY_OF_WEEK, NUMBER_OF_PAIR, SUBJECT, PAIR_TYPE, EXAM_TYPE, TEACHER, CABINET) VALUES (2, 1, 'ALWAYS', 'MONDAY', 2, 'Англійська мова', 'DEFAULT', 'PASS_FAIL', 'Летуновська І. В.', '211');
+INSERT INTO PUBLIC.PAIRS (ID, GROUP_ID, WEEK_STATUS, DAY_OF_WEEK, NUMBER_OF_PAIR, SUBJECT, PAIR_TYPE, EXAM_TYPE, TEACHER, CABINET) VALUES (3, 1, 'ALWAYS', 'MONDAY', 3, 'Лінійна алгебра', 'PRACTICE', 'EXAM', 'Дрозд-Корольова О. Ю.', '32');

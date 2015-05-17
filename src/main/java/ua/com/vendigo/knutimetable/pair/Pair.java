@@ -42,6 +42,10 @@ public class Pair {
         return id;
     }
 
+    public int getNumberOfPair() {
+        return numberOfPair;
+    }
+
     public WeekStatus getWeekStatus() {
         return weekStatus;
     }

@@ -30,7 +30,7 @@ ttServices.factory('Group', ['$resource',
 
 ttServices.factory('TimeTable', ['$resource',
     function ($resource) {
-        return $resource('groups/:groupId/pairs', {}, {
+        return $resource('timetable/forGroup/:groupId', {}, {
             query: {method: 'GET', params: {groupId:'groupId'}}
         });
     }]);

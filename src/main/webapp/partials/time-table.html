@@ -1,34 +1,29 @@
-<div ng-show="group">
+<div ng-show="timetable">
     <h2>
         <tt-button-back></tt-button-back>
-        {{group.courseNumber}} курс, {{group.name}}
-        <span ng-show="group.department">{{group.department}}</span>
+        {{timetable.courseNumber}} курс, {{timetable.groupName}}
+        <span ng-show="timetable.groupDepartment">{{timetable.groupDepartment}}</span>
     </h2>
 
-    <table class="table table-bordered">
-        <tr ng-repeat="pair in pairs">
-            <td>{{pair.subject}}</td>
-        </tr>
-     </table>
+    <div class="list-group">
+        <div class="list-group-item" ng-repeat="(dayOfWeek, pairs) in timetable.days">
+            <h4 class="list-group-heading">{{dayOfWeek | dayOfWeek}}</h4>
+            <div class="row">
+                <div class="col-sm-1"><strong>№</strong></div>
+                <div class="col-sm-11"><strong>Предмет</strong></div>
+            </div>
+            <div class="row" ng-repeat="(numberOfPair, pairsByNumber) in pairs | orderBy: 'numberOfPair'">
+                <div class="col-sm-1">{{numberOfPair}}</div>
+                <div class="col-sm-11" ng-repeat="pair in pairsByNumber">
+                    {{pair.subject}}
+                    <strong>{{pair.cabinet}}</strong><br />
+                    <small>{{pair.teacher}}</small>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <!--<tr ng-repeat="pair in pairs">
-            <td>
-                <tr>
-                    <td>{{pair.dayOfWeek}}</td>
-                </tr>
-            <tr>
-            <td>
-                <tr>
-                    <td>{{pair.numberOfPair}}</td>
-                    <td>{{pair.subject}} <b>{{pair.cabinet}}</b><br/>
-                        {{pair.teacher}}
-                    </td>
-                </tr>
-            </td>
-        </tr>-->
-    </table>
-
-    <div ng-hide="pairs">
+    <div ng-hide="timetable">
         <h1>Розклад відсутній</h1>
         <h4 tt-Back></h4>
     </div>
