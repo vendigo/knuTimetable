@@ -31,5 +31,11 @@ ttApp.config(['$routeProvider',
             when('/admin/faculties', {
                 templateUrl: 'partials/admin/faculties.html',
                 controller: 'FacultiesCtrl'
+            }).when('/admin/faculties/:action/:facultyId', {
+                templateUrl: 'partials/admin/faculty.html',
+                controller: 'FacultyAdminCtrl'
+            }).when('/admin/faculties/:action', {
+                templateUrl: 'partials/admin/faculty.html',
+                controller: 'FacultyAdminCtrl'
             });
     }]);

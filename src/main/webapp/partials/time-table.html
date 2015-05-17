@@ -2,12 +2,12 @@
     <h2>
         <tt-button-back></tt-button-back>
         {{timetable.courseNumber}} курс, {{timetable.groupName}}
-        <span ng-show="timetable.groupDepartment">{{timetable.groupDepartment}}</span>
+        <span ng-show="timetable.groupDepartment"> - {{timetable.groupDepartment}}</span>
     </h2>
 
     <div class="list-group">
         <div class="list-group-item" ng-repeat="(dayOfWeek, pairs) in timetable.days">
-            <h4 class="list-group-heading">{{dayOfWeek | dayOfWeek}}</h4>
+            <h4 class="list-group-heading">{{dayOfWeek | local}}</h4>
             <div class="row">
                 <div class="col-sm-1"><strong>№</strong></div>
                 <div class="col-sm-11"><strong>Предмет</strong></div>

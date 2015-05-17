@@ -1,0 +1,12 @@
+<h2><tt-button-back></tt-button-back> {{title|local}}</h2>
+<form role="form" novalidate>
+    <div class="form-group">
+        <label for="facultyName">Назва:</label>
+        <input class="form-control" id="facultyName" ng-model="faculty.name">
+    </div>
+    <div class="form-group">
+        <label for="facultyDescription">Опис:</label>
+        <textarea class="form-control" id="facultyDescription" ng-model="faculty.description"></textarea>
+    </div>
+    <button type="submit" class="btn btn-default" ng-click="saveFaculty()">Зберегти</button>
+</form>

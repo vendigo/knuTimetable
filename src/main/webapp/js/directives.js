@@ -8,6 +8,6 @@ ttDirectives.directive('ttBack', function() {
 
 ttDirectives.directive('ttButtonBack', function() {
     return {
-        template: '<a href="javascript:history.back()"><span class="glyphicon glyphicon-arrow-left"></span></a>'
+        template: '<a href="javascript:history.back()"><span class="glyphicon glyphicon-arrow-left"> </span></a>'
     };
 });
