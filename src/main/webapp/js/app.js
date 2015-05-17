@@ -1,5 +1,6 @@
 var ttApp = angular.module('knuTimeTable', ['ngRoute', 'ttControllers', 'ttServices', 'ttFilters', 'ttDirectives']);
 
+/*User routes*/
 ttApp.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
@@ -20,5 +21,15 @@ ttApp.config(['$routeProvider',
             }).
             otherwise({
                 templateUrl: 'partials/404.html'
+            });
+    }]);
+
+/*Admin routes*/
+ttApp.config(['$routeProvider',
+    function($routeProvider) {
+        $routeProvider.
+            when('/admin/faculties', {
+                templateUrl: 'partials/admin/faculties.html',
+                controller: 'FacultiesCtrl'
             });
     }]);

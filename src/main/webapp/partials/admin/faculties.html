@@ -1,0 +1,12 @@
+<div>
+    <p>
+        <a href="#/admin/faculties/new" class="btn btn-default" role="button">Додати факультет</a>
+    </p>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="faculty in faculties">
+            {{faculty.name}}
+            <a ng-href="#/admin/faculties/{{faculty|entityId}}"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a href="#/admin/faculties" ng-click="deleteFaculty(faculty)"><span class="glyphicon glyphicon-remove"></span></a>
+        </li>
+    </ul>
+</div>

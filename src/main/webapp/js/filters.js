@@ -21,6 +21,13 @@ ttFilters.filter('dayOfWeek', function() {
     }
 });
 
+ttFilters.filter('entityId', function() {
+    return function(input) {
+        var href = input._links.self.href;
+        return href.split("/").pop();
+    }
+});
+
 ttFilters.filter('facultyLink', function() {
     return function(input) {
         var href = input._links.self.href;
@@ -28,6 +35,23 @@ ttFilters.filter('facultyLink', function() {
         return href;
     }
 });
+
+ttFilters.filter('facultyEditLink', function() {
+    return function(input) {
+        var href = input._links.self.href;
+        href = href.replace("/faculties","/#/admin/faculties");
+        return href;
+    }
+});
+
+ttFilters.filter('facultyDeleteLink', function() {
+    return function(input) {
+        var href = input._links.self.href;
+        href = href.replace("/faculties","/#/admin/faculties");
+        return href;
+    }
+});
+
 
 ttFilters.filter('timeTableForGroupLink', function() {
     return function(input) {
