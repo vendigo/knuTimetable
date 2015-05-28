@@ -6,7 +6,6 @@ ttFilters.filter('local', function() {
         }
 });
 
-
 ttFilters.filter('entityId', function() {
     return function(input) {
         var href = input._links.self.href;

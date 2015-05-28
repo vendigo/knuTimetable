@@ -29,26 +29,6 @@ ttControllers.controller('FacultyCtrl', ['$scope', '$routeParams', 'Faculty', 'G
     });
 }]);
 
-ttControllers.controller('FacultyAdminCtrl', ['$scope', '$routeParams', '$window', 'Faculty', 'Faculties', function ($scope, $routeParams, $window, Faculty, Faculties) {
-    /*Edit*/
-    if ($routeParams.action == "edit") {
-        $scope.title = "EDIT";
-        $scope.faculty = Faculty.get({facultyId: $routeParams.facultyId});
-    } else if ($routeParams.action == "new") {
-        $scope.title = "NEW";
-        $scope.faculty = {
-            name: "",
-            description: ""
-        };
-    }
-
-    $scope.saveFaculty = function () {
-        Faculties.save($scope.faculty);
-        $window.location.href = "#/admin/faculties/";
-    }
-
-}]);
-
 ttControllers.controller('TimeTableCtrl', ['$scope', '$routeParams', 'TimeTable', function ($scope, $routeParams, TimeTable) {
     $scope.timetable = TimeTable.get({groupId: $routeParams.groupId});
 }]);

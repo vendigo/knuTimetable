@@ -7,10 +7,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import ua.com.vendigo.knutimetable.group.Group;
 import ua.com.vendigo.knutimetable.group.GroupRepository;
-import ua.com.vendigo.knutimetable.pair.Pair;
-import ua.com.vendigo.knutimetable.pair.PairRepository;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/timetable")
