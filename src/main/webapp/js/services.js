@@ -7,20 +7,20 @@ ttServices.factory('Faculties', ['$resource',
 
 ttServices.factory('Faculty', ['$resource',
     function ($resource) {
-        return $resource('/faculties/:facultyId', {facultyId:"facultyId"});
+        return $resource('/faculties/:facultyId');
     }]);
 
 ttServices.factory('Groups', ['$resource',
     function ($resource) {
-        return $resource('/faculties/:facultyId/groups', {facultyId:'facultyId'});
+        return $resource('/faculties/:facultyId/groups');
     }]);
 
 ttServices.factory('Group', ['$resource',
     function ($resource) {
-        return $resource('/groups/:groupId', {groupId:'groupId'});
+        return $resource('/groups/:groupId');
     }]);
 
 ttServices.factory('TimeTable', ['$resource',
     function ($resource) {
-        return $resource('timetable/forGroup/:groupId', {groupId:'groupId'});
+        return $resource('timetable/forGroup/:groupId');
     }]);

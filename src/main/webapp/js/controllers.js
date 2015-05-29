@@ -2,7 +2,7 @@ var ttControllers = angular.module("ttControllers", []);
 
 ttControllers.controller('FacultiesCtrl', ['$scope', '$filter', 'Faculties', 'Faculty', function ($scope, $filter, Faculties, Faculty) {
     var loadFaculties = function () {
-        Faculties.get().$promise.then(function (data) {
+        Faculties.get(function (data) {
             $scope.faculties = data._embedded.faculties;
         });
     };
@@ -12,8 +12,7 @@ ttControllers.controller('FacultiesCtrl', ['$scope', '$filter', 'Faculties', 'Fa
 
     $scope.deleteFaculty = function (faculty) {
         var _facultyId = $filter('entityId')(faculty);
-        console.log("deleting facultyId: " + _facultyId);
-        Faculty.delete({facultyId: _facultyId}).$promise.then(function (data) {
+        Faculty.delete({facultyId: _facultyId}, function () {
             loadFaculties();
         });
     }
@@ -23,8 +22,7 @@ ttControllers.controller('FacultyCtrl', ['$scope', '$routeParams', 'Faculty', 'G
     /*Load Faculty information*/
     $scope.faculty = Faculty.get({facultyId: $routeParams.facultyId});
     /*Load groups*/
-    var groupPromise = Groups.get({facultyId: $routeParams.facultyId});
-    groupPromise.$promise.then(function (data) {
+    Groups.get({facultyId: $routeParams.facultyId} ,function (data) {
         $scope.groups = data._embedded.groups;
     });
 }]);

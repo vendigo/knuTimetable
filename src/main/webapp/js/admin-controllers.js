@@ -7,9 +7,13 @@ ttControllers.controller('FacultyAdminCtrl', ['$scope', '$routeParams', '$filter
         if ($routeParams.action == "edit") {
             /*Edit excisting*/
             $scope.title = "EDIT";
-            $scope.faculty = Faculty.get({facultyId: $routeParams.facultyId});
-            $scope.faculty.id = $filter('entityId')(object);
-            $scope.groups = Groups.get($scope.faculty.id);
+
+            Faculty.get({facultyId: $routeParams.facultyId}, function(faculty) {
+                $scope.faculty = faculty;
+                $scope.faculty.id = $filter('entityId')($scope.faculty);
+                loadGroups();
+            });
+
             saveMethod = Faculty.save;
         } else if ($routeParams.action == "new") {
             /*Creation new*/
@@ -21,13 +25,24 @@ ttControllers.controller('FacultyAdminCtrl', ['$scope', '$routeParams', '$filter
             saveMethod = Faculties.save;
         }
 
-        /*Groups*/
-
-
         /*Faculty saving*/
         $scope.saveFaculty = function () {
             saveMethod($scope.faculty);
             $location.path("/admin/faculties");
         };
+
+        var loadGroups = function() {
+            Groups.get({facultyId:$scope.faculty.id}, function(groups) {
+                $scope.groups = groups._embedded.groups;
+            });
+        };
+
+        /*Group deleting*/
+        $scope.deleteGroup = function (group) {
+            var _groupId = $filter('entityId')(group);
+            Faculty.delete({groupId: _groupId}, function () {
+                loadGroups();
+            });
+        }
 
     }]);
