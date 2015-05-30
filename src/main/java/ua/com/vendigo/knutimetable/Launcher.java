@@ -3,6 +3,8 @@ package ua.com.vendigo.knutimetable;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
+import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
 import ua.com.vendigo.knutimetable.timetable.TimeTableCreator;
 
 @SpringBootApplication

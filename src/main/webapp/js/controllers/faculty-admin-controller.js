@@ -1,7 +1,7 @@
 var ttAdminControllers = angular.module("ttAdminControllers", []);
 
 ttControllers.controller('FacultyAdminCtrl', ['$scope', '$routeParams', '$filter', '$location',
-    'Faculty', 'Faculties', 'Groups', function ($scope, $routeParams, $filter, $location, Faculty, Faculties, Groups) {
+    'Faculty', 'Faculties', 'Groups', 'Group', function ($scope, $routeParams, $filter, $location, Faculty, Faculties, Groups, Group) {
         var saveMethod;
 
         if ($routeParams.action == "edit") {
@@ -10,19 +10,20 @@ ttControllers.controller('FacultyAdminCtrl', ['$scope', '$routeParams', '$filter
 
             Faculty.get({facultyId: $routeParams.facultyId}, function(faculty) {
                 $scope.faculty = faculty;
-                $scope.faculty.id = $filter('entityId')($scope.faculty);
+                $scope.faculty.id = $routeParams.facultyId;
                 loadGroups();
             });
 
-            saveMethod = Faculty.save;
+            saveMethod = function(faculty) {
+                Faculty.update(faculty);
+            };
+
         } else if ($routeParams.action == "new") {
             /*Creation new*/
             $scope.title = "NEW";
-            $scope.faculty = {
-                name: "",
-                description: ""
+            saveMethod = function(faculty) {
+                Faculties.save(faculty);
             };
-            saveMethod = Faculties.save;
         }
 
         /*Faculty saving*/
@@ -33,14 +34,14 @@ ttControllers.controller('FacultyAdminCtrl', ['$scope', '$routeParams', '$filter
 
         var loadGroups = function() {
             Groups.get({facultyId:$scope.faculty.id}, function(groups) {
-                $scope.groups = groups._embedded.groups;
+                $scope.groups = groups._embedded && groups._embedded.groups;
             });
         };
 
         /*Group deleting*/
         $scope.deleteGroup = function (group) {
-            var _groupId = $filter('entityId')(group);
-            Faculty.delete({groupId: _groupId}, function () {
+            var group_id = $filter('entityId')(group);
+            Group.delete({groupId: group_id}, function () {
                 loadGroups();
             });
         }

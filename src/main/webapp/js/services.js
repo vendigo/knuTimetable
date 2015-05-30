@@ -7,7 +7,9 @@ ttServices.factory('Faculties', ['$resource',
 
 ttServices.factory('Faculty', ['$resource',
     function ($resource) {
-        return $resource('/faculties/:facultyId');
+        return $resource('/faculties/:facultyId', {'facultyId':'@id'}, {
+            'update':{method:'PATCH'}
+        });
     }]);
 
 ttServices.factory('Groups', ['$resource',
@@ -17,7 +19,7 @@ ttServices.factory('Groups', ['$resource',
 
 ttServices.factory('Group', ['$resource',
     function ($resource) {
-        return $resource('/groups/:groupId');
+        return $resource('/groups/:groupId', {'groupId':'@id'});
     }]);
 
 ttServices.factory('TimeTable', ['$resource',
