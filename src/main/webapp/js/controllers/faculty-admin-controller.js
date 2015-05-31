@@ -1,5 +1,3 @@
-var ttAdminControllers = angular.module("ttAdminControllers", []);
-
 ttControllers.controller('FacultyAdminCtrl', ['$scope', '$routeParams', '$filter', '$location',
     'Faculty', 'Faculties', 'Groups', 'Group', function ($scope, $routeParams, $filter, $location, Faculty, Faculties, Groups, Group) {
         var saveMethod;

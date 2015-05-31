@@ -19,7 +19,21 @@ ttServices.factory('Groups', ['$resource',
 
 ttServices.factory('Group', ['$resource',
     function ($resource) {
-        return $resource('/groups/:groupId', {'groupId':'@id'});
+        return $resource('/groups/:groupId', {'groupId':'@id'}, {
+            'update':{method:'PATCH'}
+        });
+    }]);
+
+ttServices.factory('Pairs', ['$resource',
+    function ($resource) {
+        return $resource('/groups/:groupId/pairs');
+    }]);
+
+ttServices.factory('Pair', ['$resource',
+    function ($resource) {
+        return $resource('/pairs/:pairId', {'pairId':'@id'}, {
+            'update':{method:'PATCH'}
+        });
     }]);
 
 ttServices.factory('TimeTable', ['$resource',

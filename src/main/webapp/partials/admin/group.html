@@ -1,0 +1,31 @@
+<h2><tt-button-back></tt-button-back> {{title|local}}</h2>
+<form role="form" novalidate>
+    <div class="form-group">
+        <label for="courseNumber">Номер курсу:</label>
+        <input class="form-control" id="courseNumber" ng-model="group.courseNumber">
+    </div>
+    <div class="form-group">
+        <label for="groupName">Назва групи:</label>
+        <input class="form-control" id="groupName" ng-model="group.name">
+    </div>
+    <div class="form-group">
+        <label for="groupDepartment">Кафедра:</label>
+        <textarea class="form-control" id="groupDepartment" ng-model="group.department"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="groupDescription">Опис:</label>
+        <textarea class="form-control" id="groupDescription" ng-model="group.description"></textarea>
+    </div>
+    <button type="submit" class="btn btn-default" ng-click="saveGroup()">Зберегти</button>
+</form>
+
+<div id="groups" ng-show="pairs">
+    <h4>Пари:</h4>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="pair in pairs">
+            {{pair.dayOfWeek}} - {{pair.numberOfPair}}) {{pair.subject}}
+            <a ng-href="#/admin/pairs/edit/{{pair|entityId}}"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a ng-click="deletePair(pair)" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+        </li>
+    </ul>
+</div>

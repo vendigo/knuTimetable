@@ -1,4 +1,7 @@
-<h2><tt-button-back></tt-button-back> {{title|local}}</h2>
+<h2>
+    <tt-button-back></tt-button-back>
+    {{title|local}}
+</h2>
 <form role="form" novalidate>
     <div class="form-group">
         <label for="facultyName">Назва:</label>
@@ -12,12 +15,16 @@
 </form>
 
 <div id="groups" ng-show="groups">
-<h4>Групи:</h4>
-<ul class="list-group">
-    <li class="list-group-item" ng-repeat="group in groups">
-        {{group.courseNumber}} курс, {{group.name}} <span ng-show="group.department">, {{group.department}}</span>
-        <a ng-href="#/admin/groups/edit/{{group|entityId}}"><span class="glyphicon glyphicon-pencil"></span></a>
-        <a ng-click="deleteGroup(group)" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
-    </li>
-</ul>
+    <h4>Групи:</h4>
+
+    <p>
+        <a ng-href="#/admin/faculties//new" class="btn btn-default" role="button">Додати факультет</a>
+    </p>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="group in groups">
+            {{group.courseNumber}} курс, {{group.name}} <span ng-show="group.department">, {{group.department}}</span>
+            <a ng-href="#/admin/groups/edit/{{group|entityId}}"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a ng-click="deleteGroup(group)" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+        </li>
+    </ul>
 </div>
