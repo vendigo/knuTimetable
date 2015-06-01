@@ -1,7 +1,9 @@
 package ua.com.vendigo.knutimetable.timetable;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import ua.com.vendigo.knutimetable.group.Group;
 import ua.com.vendigo.knutimetable.pair.Pair;
+import ua.com.vendigo.knutimetable.pair.PairRepository;
 import ua.com.vendigo.knutimetable.pair.SimplePair;
 import ua.com.vendigo.knutimetable.pair.WeekStatus;
 
@@ -14,6 +16,10 @@ import java.util.Map;
 import static ua.com.vendigo.knutimetable.util.Validator.notNull;
 
 public class TimeTableCreator {
+
+    @Autowired
+    PairRepository pairRepository;
+
     public TimeTable createTimeTable(Group group) {
         notNull(group, "group");
 
@@ -22,7 +28,8 @@ public class TimeTableCreator {
         String groupDepartment = group.getDepartment();
 
         Map<DayOfWeek, Map<Integer, List<SimplePair>>> daysMap = new HashMap<>();
-        for (Pair pair : group.getPairs()) {
+        List<Pair> pairs = pairRepository.findByGroup_Id(group.getId());
+        for (Pair pair : pairs) {
             DayOfWeek dayOfWeek = pair.getDayOfWeek();
             Map<Integer, List<SimplePair>> day = getDayOrAddAndGet(daysMap, dayOfWeek);
 

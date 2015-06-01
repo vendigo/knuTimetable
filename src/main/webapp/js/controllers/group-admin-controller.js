@@ -1,5 +1,5 @@
-ttControllers.controller('GroupAdminCtrl', ['$scope', '$routeParams', '$filter', '$location',
-    'Groups', 'Group', 'Pairs', 'Pair', function ($scope, $routeParams, $filter, $location, Groups, Group, Pairs, Pair) {
+ttControllers.controller('GroupAdminCtrl', ['$scope', '$routeParams', '$filter', '$window',
+    'Faculty', 'Groups', 'FacultyGroups', 'Group', 'GroupPairs', 'Pair', function ($scope, $routeParams, $filter, $window, Faculty, Groups, FacultyGroups, Group, GroupPairs, Pair) {
         var saveMethod;
 
         if ($routeParams.action == "edit") {
@@ -19,6 +19,10 @@ ttControllers.controller('GroupAdminCtrl', ['$scope', '$routeParams', '$filter',
         } else if ($routeParams.action == "new") {
             /*Creation new*/
             $scope.title = "NEW";
+            $scope.group = {};
+            Faculty.get({facultyId:$routeParams.facultyId}, function(faculty) {
+                $scope.group.faculty = faculty;
+            });
             saveMethod = function(group) {
                 Groups.save(group);
             };
@@ -27,10 +31,11 @@ ttControllers.controller('GroupAdminCtrl', ['$scope', '$routeParams', '$filter',
         /*Group saving*/
         $scope.saveGroup = function () {
             saveMethod($scope.group);
+            $window.location.href = "#/admin/faculties/edit/"+$routeParams.facultyId;
         };
 
         var loadPairs = function() {
-            Pairs.get({groupId:$scope.group.id}, function(pairs) {
+            GroupPairs.get({groupId:$scope.group.id}, function(pairs) {
                 $scope.pairs = pairs._embedded && pairs._embedded.pairs;
             });
         };

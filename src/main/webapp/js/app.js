@@ -37,10 +37,10 @@ ttApp.config(['$routeProvider',
             }).when('/admin/faculties/:action', {
                 templateUrl: 'partials/admin/faculty.html',
                 controller: 'FacultyAdminCtrl'
-            }).when('/admin/groups/:action/:groupId', {
+            }).when('/admin/faculties/:facultyId/groups/:action/:groupId', {
                 templateUrl: 'partials/admin/group.html',
                 controller: 'GroupAdminCtrl'
-            }).when('/admin/groups/:action', {
+            }).when('/admin/faculties/:facultyId/groups/:action', {
                 templateUrl: 'partials/admin/group.html',
                 controller: 'GroupAdminCtrl'
             });

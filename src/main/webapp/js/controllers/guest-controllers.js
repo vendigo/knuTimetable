@@ -3,7 +3,7 @@ var ttControllers = angular.module("ttControllers", []);
 ttControllers.controller('FacultiesCtrl', ['$scope', '$filter', 'Faculties', 'Faculty', function ($scope, $filter, Faculties, Faculty) {
     var loadFaculties = function () {
         Faculties.get(function (data) {
-            $scope.faculties = data._embedded.faculties;
+            $scope.faculties = data._embedded && data._embedded.faculties;
         });
     };
 
@@ -18,12 +18,12 @@ ttControllers.controller('FacultiesCtrl', ['$scope', '$filter', 'Faculties', 'Fa
     }
 }]);
 
-ttControllers.controller('FacultyCtrl', ['$scope', '$routeParams', 'Faculty', 'Groups', function ($scope, $routeParams, Faculty, Groups) {
+ttControllers.controller('FacultyCtrl', ['$scope', '$routeParams', 'Faculty', 'FacultyGroups', function ($scope, $routeParams, Faculty, FacultyGroups) {
     /*Load Faculty information*/
     $scope.faculty = Faculty.get({facultyId: $routeParams.facultyId});
     /*Load groups*/
-    Groups.get({facultyId: $routeParams.facultyId} ,function (data) {
-        $scope.groups = data._embedded.groups;
+    FacultyGroups.get({facultyId: $routeParams.facultyId} ,function (data) {
+        $scope.groups = data._embedded && data._embedded.groups;
     });
 }]);
 

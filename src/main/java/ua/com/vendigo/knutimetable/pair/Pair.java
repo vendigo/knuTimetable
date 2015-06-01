@@ -1,5 +1,7 @@
 package ua.com.vendigo.knutimetable.pair;
 
+import ua.com.vendigo.knutimetable.group.Group;
+
 import javax.persistence.*;
 import java.time.DayOfWeek;
 
@@ -9,6 +11,9 @@ public class Pair {
     @Id
     @GeneratedValue
     private Integer id;
+
+    @ManyToOne()
+    private Group group;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
@@ -40,6 +45,10 @@ public class Pair {
 
     public Integer getId() {
         return id;
+    }
+
+    public Group getGroup() {
+        return group;
     }
 
     public int getNumberOfPair() {

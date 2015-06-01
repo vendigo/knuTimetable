@@ -1,5 +1,5 @@
-ttControllers.controller('FacultyAdminCtrl', ['$scope', '$routeParams', '$filter', '$location',
-    'Faculty', 'Faculties', 'Groups', 'Group', function ($scope, $routeParams, $filter, $location, Faculty, Faculties, Groups, Group) {
+ttControllers.controller('FacultyAdminCtrl', ['$scope', '$routeParams', '$filter', '$window',
+    'Faculty', 'Faculties', 'FacultyGroups', 'Group', function ($scope, $routeParams, $filter, $window, Faculty, Faculties, FacultyGroups, Group) {
         var saveMethod;
 
         if ($routeParams.action == "edit") {
@@ -27,11 +27,11 @@ ttControllers.controller('FacultyAdminCtrl', ['$scope', '$routeParams', '$filter
         /*Faculty saving*/
         $scope.saveFaculty = function () {
             saveMethod($scope.faculty);
-            $location.path("/admin/faculties");
+            $window.location.href = "#/admin/faculties";
         };
 
         var loadGroups = function() {
-            Groups.get({facultyId:$scope.faculty.id}, function(groups) {
+            FacultyGroups.get({facultyId:$scope.faculty.id}, function(groups) {
                 $scope.groups = groups._embedded && groups._embedded.groups;
             });
         };
