@@ -2,6 +2,7 @@ package ua.com.vendigo.knutimetable.group;
 
 import com.google.common.annotations.VisibleForTesting;
 import org.hibernate.annotations.NaturalId;
+import org.springframework.data.rest.core.annotation.RestResource;
 import ua.com.vendigo.knutimetable.faculty.Faculty;
 import ua.com.vendigo.knutimetable.pair.Pair;
 
@@ -15,6 +16,7 @@ public class Group {
     @GeneratedValue
     private Integer id;
     @ManyToOne()
+    @RestResource(exported = false)
     private Faculty faculty;
     @Column(nullable = false)
     private int courseNumber;

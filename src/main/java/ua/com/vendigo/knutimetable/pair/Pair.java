@@ -1,5 +1,6 @@
 package ua.com.vendigo.knutimetable.pair;
 
+import org.springframework.data.rest.core.annotation.RestResource;
 import ua.com.vendigo.knutimetable.group.Group;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ public class Pair {
     private Integer id;
 
     @ManyToOne()
+    @RestResource(exported = false)
     private Group group;
 
     @Column(nullable = false)

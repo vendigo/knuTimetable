@@ -1,5 +1,4 @@
 <h2><tt-button-back></tt-button-back> {{title|local}}</h2>
-<p>{{group}}</p>
 <form role="form" novalidate>
     <div class="form-group">
         <label for="courseNumber">Номер курсу:</label>
@@ -20,12 +19,16 @@
     <button type="submit" class="btn btn-default" ng-click="saveGroup()">Зберегти</button>
 </form>
 
-<div id="groups" ng-show="pairs">
+<div id="groups" ng-show="group.id">
     <h4>Пари:</h4>
-    <ul class="list-group">
+    <p>
+        <a ng-href="#/admin/faculties/{{facultyId}}/groups/{{group.id}}/pairs/new"
+           class="btn btn-default" role="button">Додати пару</a>
+    </p>
+    <ul class="list-group" ng-show="pairs">
         <li class="list-group-item" ng-repeat="pair in pairs">
-            {{pair.dayOfWeek}} - {{pair.numberOfPair}}) {{pair.subject}}
-            <a ng-href="#/admin/pairs/edit/{{pair|entityId}}"><span class="glyphicon glyphicon-pencil"></span></a>
+            {{pair.dayOfWeek|local}} - {{pair.numberOfPair}}) {{pair.subject}}
+            <a ng-href="#/admin/faculties/{{facultyId}}/groups/{{group.id}}/pairs/edit/{{pair|entityId}}"><span class="glyphicon glyphicon-pencil"></span></a>
             <a ng-click="deletePair(pair)" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
         </li>
     </ul>

@@ -1,6 +1,7 @@
 ttControllers.controller('GroupAdminCtrl', ['$scope', '$routeParams', '$filter', '$window',
-    'Faculty', 'Groups', 'FacultyGroups', 'Group', 'GroupPairs', 'Pair', function ($scope, $routeParams, $filter, $window, Faculty, Groups, FacultyGroups, Group, GroupPairs, Pair) {
+    'Groups', 'FacultyGroups', 'Group', 'GroupPairs', 'Pair', function ($scope, $routeParams, $filter, $window, Groups, FacultyGroups, Group, GroupPairs, Pair) {
         var saveMethod;
+        $scope.facultyId = $routeParams.facultyId;
 
         if ($routeParams.action == "edit") {
             /*Edit excisting*/
@@ -20,9 +21,7 @@ ttControllers.controller('GroupAdminCtrl', ['$scope', '$routeParams', '$filter',
             /*Creation new*/
             $scope.title = "NEW";
             $scope.group = {};
-            Faculty.get({facultyId:$routeParams.facultyId}, function(faculty) {
-                $scope.group.faculty = faculty;
-            });
+            $scope.group.faculty = {id:$scope.facultyId};
             saveMethod = function(group) {
                 Groups.save(group);
             };
@@ -42,7 +41,7 @@ ttControllers.controller('GroupAdminCtrl', ['$scope', '$routeParams', '$filter',
 
         /*Pair deleting*/
         $scope.deletePair = function (pair) {
-            var pair_id = $filter('pairId')(pair);
+            var pair_id = $filter('entityId')(pair);
             Pair.delete({pairId: pair_id}, function () {
                 loadPairs();
             });

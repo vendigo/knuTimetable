@@ -43,5 +43,11 @@ ttApp.config(['$routeProvider',
             }).when('/admin/faculties/:facultyId/groups/:action', {
                 templateUrl: 'partials/admin/group.html',
                 controller: 'GroupAdminCtrl'
+            }).when('/admin/faculties/:facultyId/groups/:groupId/pairs/:action/:pairId', {
+                templateUrl: 'partials/admin/pair.html',
+                controller: 'PairAdminCtrl'
+            }).when('/admin/faculties/:facultyId/groups/:groupId/pairs/:action', {
+                templateUrl: 'partials/admin/pair.html',
+                controller: 'PairAdminCtrl'
             });
     }]);
