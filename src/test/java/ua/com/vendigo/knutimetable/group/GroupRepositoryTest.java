@@ -3,8 +3,10 @@ package ua.com.vendigo.knutimetable.group;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import ua.com.vendigo.knutimetable.Launcher;
 import ua.com.vendigo.knutimetable.faculty.Faculty;
 import ua.com.vendigo.knutimetable.faculty.FacultyRepository;
@@ -15,6 +17,8 @@ import static org.hamcrest.Matchers.notNullValue;
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Launcher.class)
+@WebAppConfiguration
+@IntegrationTest
 public class GroupRepositoryTest {
     @Autowired
     FacultyRepository facultyRepository;
@@ -35,6 +39,6 @@ public class GroupRepositoryTest {
         Group group = new Group(faculty, 1, "1st Group", null, null);
         groupRepository.save(group);
 
-        assertThat(group, notNullValue());
+        assertThat(group.getId(), notNullValue());
     }
 }

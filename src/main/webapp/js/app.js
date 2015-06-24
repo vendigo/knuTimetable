@@ -28,6 +28,9 @@ ttApp.config(['$routeProvider',
 ttApp.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
+            when('/admin/', {
+                redirectTo: '/admin/faculties'
+            }).
             when('/admin/faculties', {
                 templateUrl: 'partials/admin/faculties.html',
                 controller: 'FacultiesCtrl'

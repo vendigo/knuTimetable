@@ -1,6 +1,7 @@
 package ua.com.vendigo.knutimetable.timetable;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import ua.com.vendigo.knutimetable.group.Group;
 import ua.com.vendigo.knutimetable.pair.Pair;
 import ua.com.vendigo.knutimetable.pair.PairRepository;
@@ -15,6 +16,7 @@ import java.util.Map;
 
 import static ua.com.vendigo.knutimetable.util.Validator.notNull;
 
+@Component
 public class TimeTableCreator {
 
     @Autowired

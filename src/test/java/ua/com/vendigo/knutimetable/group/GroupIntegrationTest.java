@@ -10,7 +10,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import ua.com.vendigo.knutimetable.Launcher;
 
 import static com.jayway.restassured.RestAssured.when;
-import static org.hamcrest.Matchers.hasItems;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
