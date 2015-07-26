@@ -18,6 +18,8 @@ import static ua.com.vendigo.knutimetable.util.Validator.notNull;
 
 @Component
 public class TimeTableCreator {
+    public static final int ODD_PAIR_INDEX = 0;
+    public static final int EVEN_PAIR_INDEX = 1;
 
     @Autowired
     PairRepository pairRepository;
@@ -41,7 +43,7 @@ public class TimeTableCreator {
             int weekIndex = getWeekIndex(pair);
             SimplePair simplePair = new SimplePair(pair);
 
-            pairsByNumber.add(weekIndex, simplePair);
+            pairsByNumber.set(weekIndex, simplePair);
         }
 
         return new TimeTable(courseNumber, groupName, groupDepartment, daysMap);
@@ -49,9 +51,9 @@ public class TimeTableCreator {
 
     private int getWeekIndex(Pair pair) {
         if (pair.getWeekStatus() == WeekStatus.ALWAYS || pair.getWeekStatus() == WeekStatus.ODD_WEEK) {
-            return 0;
+            return ODD_PAIR_INDEX;
         } else {
-            return 1;
+            return EVEN_PAIR_INDEX;
         }
     }
 
@@ -60,6 +62,9 @@ public class TimeTableCreator {
 
         if (pairsByNumber == null) {
             pairsByNumber = new ArrayList<>();
+            pairsByNumber.add(null);
+            pairsByNumber.add(null);
+
             day.put(numberOfPair, pairsByNumber);
         }
 

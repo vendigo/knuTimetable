@@ -45,6 +45,22 @@ public class Pair {
     @Column(nullable = false)
     private String cabinet;
 
+    public Pair() {
+    }
+
+    public Pair(Group group, WeekStatus weekStatus, DayOfWeek dayOfWeek, int numberOfPair, String subject,
+                PairType pairType, ExamType examType, String teacher, String cabinet) {
+        this.group = group;
+        this.weekStatus = weekStatus;
+        this.dayOfWeek = dayOfWeek;
+        this.numberOfPair = numberOfPair;
+        this.subject = subject;
+        this.pairType = pairType;
+        this.examType = examType;
+        this.teacher = teacher;
+        this.cabinet = cabinet;
+    }
+
     public Integer getId() {
         return id;
     }

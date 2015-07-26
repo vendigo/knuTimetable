@@ -1,13 +1,9 @@
 package ua.com.vendigo.knutimetable.group;
 
-import com.google.common.annotations.VisibleForTesting;
-import org.hibernate.annotations.NaturalId;
 import org.springframework.data.rest.core.annotation.RestResource;
 import ua.com.vendigo.knutimetable.faculty.Faculty;
-import ua.com.vendigo.knutimetable.pair.Pair;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "groups")
@@ -30,8 +26,8 @@ public class Group {
     public Group() {
     }
 
-    @VisibleForTesting
-    Group(Faculty faculty, int courseNumber, String name, String department, String description) {
+    public Group(Integer id, Faculty faculty, int courseNumber, String name, String department, String description) {
+        this.id = id;
         this.faculty = faculty;
         this.courseNumber = courseNumber;
         this.name = name;

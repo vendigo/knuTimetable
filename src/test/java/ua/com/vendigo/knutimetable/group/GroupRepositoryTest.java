@@ -27,7 +27,7 @@ public class GroupRepositoryTest {
 
     @Test
     public void testCreateNewGroupWithoutFaculty() throws Exception {
-        Group group = new Group(null, 1, "1st Group", null, null);
+        Group group = new Group(1, null, 1, "1st Group", null, null);
         groupRepository.save(group);
 
         assertThat(group.getId(), notNullValue());
@@ -36,7 +36,7 @@ public class GroupRepositoryTest {
     @Test
     public void testCreateNewGroupWithFaculty() throws Exception {
         Faculty faculty = facultyRepository.findOne(1);
-        Group group = new Group(faculty, 1, "1st Group", null, null);
+        Group group = new Group(1, faculty, 1, "1st Group", null, null);
         groupRepository.save(group);
 
         assertThat(group.getId(), notNullValue());
